@@ -1,4 +1,7 @@
-[
+import json
+
+# JSON original
+data = [
     {
         "Loreto": {
             "Arboles_de_dosel_alto": [
@@ -1050,3 +1053,31 @@
         }
     }
 ]
+
+
+# Transformación del JSON
+plantas = []
+
+for departamento in data:
+    for region, tipos_plantas in departamento.items():
+        for tipo, plantas_info in tipos_plantas.items():
+            for planta in plantas_info:
+                plantas.append({
+                    "region": region,
+                    "nombre_cientifico": planta["nombre_cientifico"],
+                    "nombre_comun": planta["nombre_comun"],
+                    "caracteristicas": planta["caracteristicas"],
+                    "zona": planta["zona"],
+                    "tipo": tipo,
+                    "img": planta["img"]
+                })
+
+# Convertir a JSON
+plantas_json = json.dumps(plantas, indent=4, ensure_ascii=False)
+
+# Guardar en un archivo (opcional)
+with open("plantas_transformadas.json", "w", encoding="utf-8") as f:
+    f.write(plantas_json)
+
+
+print("El archivo 'plantas_transformadas.json' ha sido creado exitosamente.")

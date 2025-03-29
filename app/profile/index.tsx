@@ -1,19 +1,12 @@
-import { View, Text, Button } from 'react-native';
+import { View, Text } from 'react-native';
 import React from 'react';
-import { useRouter } from 'expo-router';
 
-const profile = () => {
-  const router = useRouter();
-  const handlePress = () => {
-    router.push('/profile/settings');
-  };
-
+const index = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>profile</Text>
-      <Button title="to settings" onPress={handlePress} />
+    <View>
+      <Text>index</Text>
     </View>
   );
 };
 
-export default profile;
+export default index;
