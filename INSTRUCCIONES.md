@@ -1,7 +1,3 @@
-¡Claro! Aquí te dejo un conjunto de instrucciones bien detalladas para que las pongas en el archivo `instrucciones.md` de tu repositorio. He incluido todo el código necesario y explicado cada paso de manera sencilla para que tus compañeros, que están empezando con Git y GitHub, puedan entenderlo sin problemas.
-
----
-
 # Instrucciones para contribuir al proyecto
 
 ¡Bienvenidos al proyecto! A continuación, te detallo los pasos que debes seguir para colaborar con tu trabajo. Vamos a utilizar **Git** y **GitHub** para gestionar nuestras contribuciones de manera ordenada.
