@@ -37,6 +37,42 @@ La Fundación Jocotoco desarrolló un proyecto en la Reserva de Buenaventura, ub
 
 **Fuente:** [Reserva de Buenaventura](https://www.telemundofresno.com/especiales/estilo-de-vida/crean-app-para-apadrinar-un-arbol-y-verlo-crecer-a-distancia-en-la-selva/1953552/?utm_source=chatgpt.com)
 
+#### 3. **Ni Meraya**
+
+Ni Meraya es un Área de Conservación Privada ubicada en la región de Loreto, Perú, que promueve la reforestación y la conservación de especies nativas de la Amazonía, contribuyendo a la restauración de los ecosistemas degradados.
+
+**Características principales:**
+
+- **Ubicación:** Loreto, Perú.
+- **Objetivo:** Reforestar y conservar especies nativas de la Amazonía, restaurando ecosistemas y mejorando la biodiversidad local.
+- **Método:** Reforestación con especies nativas, protección de especies en peligro y prácticas de conservación ecológica.
+
+**Fuente:** [Ni Meraya](https://nimeraya.org/es/que-hacemos/?utm_source=chatgpt.com)
+
+#### 4. **Bosque Loyola 79**
+
+El "Bosque Loyola 79" en Santiago, República Dominicana, utiliza la técnica Miyawaki para establecer un microbosque urbano que busca mejorar la calidad del aire y promover la biodiversidad en un área urbana.
+
+**Características principales:**
+
+- **Ubicación:** Santiago, República Dominicana..
+- **Objetivo:** Crear un microbosque urbano que mejore la calidad del aire y fomente la biodiversidad en un entorno urbano.
+- **Método:** Técnica Miyawaki para desarrollar un bosque denso y de rápido crecimiento en zonas urbanas.
+
+**Fuente:** [Bosque Loyola 79](https://botanicodesantiago.com/2022/02/establecen-el-primer-bosque-bajo-el-metodo-miyawaki-en-el-pais/?utm_source=chatgpt.com)
+
+#### 5. **Microbosques Urbanos con el Método Miyawaki**
+
+En Lima, Perú, varios proyectos de microbosques urbanos han sido implementados utilizando la técnica Miyawaki, con el objetivo de reducir la contaminación y aumentar las áreas verdes dentro de las ciudades.
+
+**Características principales:**
+
+- **Ubicación:** Lima, Perú.
+- **Objetivo:** Crear microbosques urbanos para mejorar la calidad del aire, reducir la contaminación y aumentar las áreas verdes.
+- **Método:** Aplicación del método Miyawaki para desarrollar pequeños bosques densos en zonas urbanas.
+
+**Fuente:** [Microbosques Urbanos con el Método Miyawaki](https://www.lima-va.com/2024/11/6-pasos-para-forestar-zonas-urbanas-con.html?utm_source=chatgpt.com)
+
 ---
 
 ## Metodología del Proyecto
