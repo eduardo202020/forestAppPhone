@@ -4,8 +4,9 @@ import {
   DrawerItem,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import { Image, Text, View } from 'react-native';
+import { Button, Image, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { WhatsAppButton } from './Whatsapp';
 
 function CustomDrawerContent(props: any) {
   const { top, bottom } = useSafeAreaInsets();
@@ -91,7 +92,7 @@ function CustomDrawerContent(props: any) {
           paddingBottom: 20 + bottom,
         }}
       >
-        <Text>Footer</Text>
+        <WhatsAppButton />
       </View>
     </View>
   );
