@@ -36,10 +36,18 @@ Es importante que cada uno trabaje en una **rama separada** para evitar conflict
    git checkout main  # o git checkout master si esa es la rama principal
    ```
 
-2. Obtén los últimos cambios del repositorio principal (esto asegura que tu repositorio esté actualizado):
+2. Obtén los últimos cambios del repositorio principal (esto asegura que tu repositorio esté actualizado) y de la rama desarrollo:
 
    ```bash
    git pull origin main  # o git pull origin master
+   ```
+
+   ```bash
+   git checkout desarrollo
+   ```
+
+   ```bash
+   git pull origin desarrollo
    ```
 
 3. Ahora, crea una **rama nueva** para tu trabajo. Nombrala como desees (por ejemplo, `rama_jhunior`):
