@@ -115,3 +115,5 @@ Una vez que hayas creado el Pull Request, yo o alguien más revisará los cambio
 Este archivo de instrucciones ayudará a tus compañeros a entender el flujo de trabajo con Git y GitHub y a hacer sus contribuciones sin problemas. Si necesitas alguna modificación o más detalles, avísame.
 
 v2
+
+v2 from jhunior
