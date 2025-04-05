@@ -17,7 +17,7 @@ Después de hacer el fork, necesitas **clonar** el repositorio en tu máquina lo
 2. Clona tu repositorio (cambia `<tu_usuario>` por tu nombre de usuario en GitHub):
 
    ```bash
-   git clone https://github.com/<tu_usuario>/uni_proyecto.git
+   git clone https://github.com/<tu_usuario>/forestAppPhone.git
    ```
 
 3. Ingresa al directorio del proyecto:
