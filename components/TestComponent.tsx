@@ -5,6 +5,9 @@ const TestComponent = () => {
   return (
     <View>
       <Text>TestComponent</Text>
+      <Text>TestComponent</Text>
+      <Text>TestComponent</Text>
+      <Text>TestComponent</Text>
     </View>
   );
 };
