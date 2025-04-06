@@ -13,12 +13,6 @@ export default function ProfileLayout() {
           headerShown: false,
         }}
       />
-      <Stack.Screen
-        name="settings" // Otra pantalla del Stack
-        options={{
-          headerShown: false,
-        }}
-      />
     </Stack>
   );
 }

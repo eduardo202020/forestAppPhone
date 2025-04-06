@@ -3,7 +3,7 @@ import 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'; // Asegúrate de importar los iconos que necesitas
 
 import CustomDrawerContent from '@/components/CustomDrawer';
 import { StatusBar } from 'expo-status-bar';
@@ -23,34 +23,83 @@ export default function Layout() {
           },
         }}
         drawerContent={(props) => <CustomDrawerContent {...props} />}
+        initialRouteName="index"
       >
+        {/* Mi Proyecto */}
         <Drawer.Screen
-          name="index" // This is the name of the page and must match the url from root
+          name="index"
           options={{
-            drawerLabel: 'Home',
-            title: 'Overview',
+            drawerLabel: 'Mi Proyecto',
+            title: 'Mi Proyecto',
             drawerIcon: ({ color, size }) => (
-              <Ionicons name="home-outline" size={size} color={color} />
+              <MaterialCommunityIcons name="home" size={size} color={color} />
+            ),
+          }}
+        />
+
+        {/* Calendario */}
+        <Drawer.Screen
+          name="calendario"
+          options={{
+            drawerLabel: 'Calendario',
+            title: 'Calendario de Mantenimiento',
+            drawerIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="calendar"
+                size={size}
+                color={color}
+              />
+            ),
+          }}
+        />
+        {/* Pasos */}
+        <Drawer.Screen
+          name="pasos"
+          options={{
+            drawerLabel: 'Pasos',
+            title: 'Pasos del Método Miyawaki',
+            drawerIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="check-circle"
+                size={size}
+                color={color}
+              />
+            ),
+          }}
+        />
+        {/* Compost y Bocashi */}
+        <Drawer.Screen
+          name="compost"
+          options={{
+            drawerLabel: 'Compost y Bocashi',
+            title: 'Compost y Bocashi',
+            drawerIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="water" size={size} color={color} />
+            ),
+          }}
+        />
+        {/* Red Social */}
+        <Drawer.Screen
+          name="social"
+          options={{
+            drawerLabel: 'Red Social',
+            title: 'Red Social',
+            drawerIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="account-group"
+                size={size}
+                color={color}
+              />
             ),
           }}
         />
         <Drawer.Screen
-          name="news" // This is the name of the page and must match the url from root
+          name="ajustes"
           options={{
-            drawerLabel: 'News',
-            title: 'News',
+            drawerLabel: 'Ajustes',
+            title: 'Ajustes',
             drawerIcon: ({ color, size }) => (
-              <Ionicons name="newspaper-outline" size={size} color={color} />
-            ),
-          }}
-        />
-        <Drawer.Screen
-          name="profile" // This is the name of the page and must match the url from root
-          options={{
-            drawerLabel: 'Profile',
-            title: 'Perfil',
-            drawerIcon: ({ color, size }) => (
-              <Ionicons name="person-outline" size={size} color={color} />
+              <MaterialCommunityIcons name="cog" size={size} color={color} />
             ),
           }}
         />
