@@ -81,6 +81,31 @@ En Lima, Perú, varios proyectos de microbosques urbanos han sido implementados 
 - **Metodología de Desarrollo Iterativo**: Entregas rápidas de prototipos funcionales para ajustes según feedback de los usuarios.
 - **GitHub y Herramientas Colaborativas**: Para el manejo de la versión del código, asegurando la colaboración y el seguimiento.
 
+## 🧠 Metodología de Desarrollo
+
+### 📋 Marco Metodológico Principal: Ágil (Scrum)
+
+Utilizamos **Scrum** por su enfoque iterativo e incremental, ideal para el desarrollo de aplicaciones móviles con funcionalidades en constante evolución.
+
+#### Etapas del Proceso:
+- **Sprints de 2 semanas** con entregas funcionales.
+- **Backlog del producto** priorizado con historias de usuario claras (ej. “Como usuario, quiero registrar la fecha de riego para hacer seguimiento…”).
+- **Daily Stand-ups** para coordinar tareas y avances.
+- **Revisión y retrospectiva** al final de cada sprint para mejorar el proceso continuamente.
+
+### 🔁 Metodología de Desarrollo: Iterativa
+
+Complementamos Scrum con **prototipos funcionales frecuentes**. Estos prototipos se evalúan con usuarios reales para recibir feedback rápido y adaptar la app a las necesidades de la comunidad ambiental.
+
+### 🤝 Herramientas Colaborativas
+
+- **GitHub**: Control de versiones y colaboración entre desarrolladores.
+- **Trello/Notion**: Gestión de tareas y sprints.
+- **Figma**: Prototipado UI/UX.
+- **Firebase / Supabase**: Backend como servicio (autenticación, base de datos y almacenamiento).
+
+---
+
 ## Cronograma de 8 semanas
 
 | Semana   | Actividad                                                       |
@@ -112,6 +137,68 @@ En Lima, Perú, varios proyectos de microbosques urbanos han sido implementados 
 A medida que avances, puedes continuar mejorando la app según el cronograma mencionado.
 
 Recuerda incluir detalles sobre los participantes que colaboraron, el estado actual de tu proyecto, los entregables hasta el momento y los próximos pasos para tu avance.
+
+
+## 🌐 Implementación de la Red Social (semana 4)
+
+La funcionalidad de red social será una parte fundamental de ForestApp para crear comunidad y motivar el seguimiento de los proyectos.
+
+### Funciones clave:
+- **Perfiles de usuario**
+- **Feed de publicaciones**: texto, imágenes, fechas de actividades.
+- **Comentarios y reacciones**
+- **Geolocalización de proyectos públicos**
+- **Sistema de niveles o medallas** por participación
+
+### Tecnologías sugeridas:
+- **React Native** + **Expo** para desarrollo móvil multiplataforma.
+- **Firebase Firestore** como backend para datos en tiempo real.
+- **Firebase Authentication** para inicio de sesión con Google, correo, etc.
+
+
+
+## 🌿 Integración de la Base de Datos de Plantas Amazónicas (semana 5)
+
+### Objetivo:
+Orientar a los usuarios en la **selección de especies nativas** para aplicar correctamente el método Miyawaki según el tipo de suelo, humedad y clima.
+
+### Contenido de la base de datos:
+- Nombre común y científico
+- Tipo de planta (árbol, arbusto, herbácea)
+- Requerimientos de suelo y agua
+- Tiempo estimado de crecimiento
+- Función ecológica (sombra, fijadora de nitrógeno, etc.)
+- Compatibilidad con otras especies
+
+### Fuente de datos:
+- Catálogos botánicos de instituciones como el **Jardín Botánico de Loreto (Perú)**, **Instituto Nacional de Pesquisas da Amazônia (INPA)**, y bases públicas como **GBIF**.
+
+### Implementación técnica:
+- **JSON o SQLite local** para versión offline.
+- **PostgreSQL + Supabase** o **Firebase** para acceso dinámico y remoto.
+- Posibilidad de **filtrado por geolocalización**, para mostrar especies recomendadas por ubicación.
+
+---
+
+## 📱 Funcionalidades Clave de ForestApp
+
+| Funcionalidad         | Descripción                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| Registro y login       | Seguridad mediante autenticación en Firebase.                              |
+| Crear proyecto de bosque | Registro de ubicación, nombre, foto y descripción del terreno.             |
+| Selección de especies  | Recomendaciones basadas en ubicación y condiciones del suelo.              |
+| Registro de actividades | Fechas de riego, limpieza, medición de altura y notas.                     |
+| Red social             | Publicación de avances, comentarios y likes.                               |
+| Estadísticas           | Crecimiento del bosque, número de árboles plantados, impacto estimado.     |
+
+---
+
+## 🚀 Próximos pasos
+
+- [ ] Finalizar el diseño UI/UX.
+- [ ] Crear la base de datos de especies nativas.
+- [ ] Desarrollar el módulo de red social.
+- [ ] Lanzar MVP para pruebas piloto en comunidades amazónicas.
 
 ---
 
