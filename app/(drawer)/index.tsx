@@ -17,14 +17,15 @@ import { Picker } from '@react-native-picker/picker';
 import { plantas as plantasPorRegion } from '@/plantas';
 import { renderPlanta } from '@/components/RenderPlanta';
 
-import { userProyect } from '@/data/userProyect';
+import { userProyects } from '@/data/userProyect';
 import { useRouter } from 'expo-router';
+import Proyect from '@/components/Proyect';
 
 const UserScreen = () => {
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split('T')[0]
   ); // Fecha en formato YYYY-MM-DD
-  const [projects] = useState(userProyect.projects);
+  const [projects] = useState(userProyects); // Proyectos del usuario
   const [isExpanded, setIsExpanded] = useState(false); // Estado para controlar el acordeón
   const [selectedRegion, setSelectedRegion] = useState('Loreto');
 
@@ -52,7 +53,8 @@ const UserScreen = () => {
   return (
     <ScrollView style={styles.container}>
       {/* Sección de Perfil */}
-      <View style={styles.profileSection}>
+      {/* (userProyects.map((userProyect) =>{(
+        <View style={styles.profileSection}>
         <Image
           source={{ uri: userProyect.photo }}
           style={styles.profileImage}
@@ -63,7 +65,7 @@ const UserScreen = () => {
             <Text style={styles.editProfileText}>Editar perfil</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </View>) */}
 
       {/* Botones adicionales */}
       <View
@@ -109,37 +111,53 @@ const UserScreen = () => {
       </Picker>
 
       {/* Proyectos Activos */}
-      {projects.map((project) => (
-        <Card key={project.id} style={styles.projectCard}>
-          <Card.Title
-            title={project.name}
-            titleStyle={{ fontSize: 20 }}
-            subtitle={`Iniciado el ${project.startDate}`}
-            subtitleStyle={{ fontSize: 14, fontWeight: 'bold' }}
-          />
-          <Card.Content style={{ flexDirection: 'column', gap: 10 }}>
-            <ProgressBar progress={project.progress / 100} color="#2ecc71" />
-            <Text style={styles.projectText}>Área: {project.area} m²</Text>
-            <Text style={styles.projectText}>
-              Densidad: {project.density} plantas/m²
-            </Text>
-            <Card.Cover
-              source={{ uri: project.img[0] }}
-              style={styles.plantImage}
-            />
-            <Card.Cover
-              source={{ uri: project.img[1] }}
-              style={styles.plantImage}
-            />
-          </Card.Content>
+      {projects.map(
+        (project: {
+          id: string;
+          photo: string;
+          name: string;
+          region: string;
+          plantas: { nombre_cientifico: string; cantidad: number }[];
+          descripcion: string;
+          estado: 'En progreso' | 'Pendiente' | 'Completado';
+          startDate: string;
+          progress: number;
+          area: number;
+          density: number;
+          img: string[];
+          location: { latitude: number; longitude: number };
+        }) => Proyect({ proyect: project })
 
-          <Card.Actions>
-            <TouchableOpacity>
-              <Text style={styles.detailsText}>Ver detalles</Text>
-            </TouchableOpacity>
-          </Card.Actions>
-        </Card>
-      ))}
+        //   <Card key={project.id} style={styles.projectCard}>
+        //   <Card.Title
+        //     title={project.name}
+        //     titleStyle={{ fontSize: 20 }}
+        //     subtitle={`Iniciado el ${project.startDate}`}
+        //     subtitleStyle={{ fontSize: 14, fontWeight: 'bold' }}
+        //   />
+        //   <Card.Content style={{ flexDirection: 'column', gap: 10 }}>
+        //     <ProgressBar progress={project.progress / 100} color="#2ecc71" />
+        //     <Text style={styles.projectText}>Área: {project.area} m²</Text>
+        //     <Text style={styles.projectText}>
+        //       Densidad: {project.density} plantas/m²
+        //     </Text>
+        //     <Card.Cover
+        //       source={{ uri: project.img[0] }}
+        //       style={styles.plantImage}
+        //     />
+        //     <Card.Cover
+        //       source={{ uri: project.img[1] }}
+        //       style={styles.plantImage}
+        //     />
+        //   </Card.Content>
+
+        //   <Card.Actions>
+        //     <TouchableOpacity>
+        //       <Text style={styles.detailsText}>Ver detalles</Text>
+        //     </TouchableOpacity>
+        //   </Card.Actions>
+        // </Card>
+      )}
 
       <View style={styles.containerCalendar}>
         <List.Accordion
