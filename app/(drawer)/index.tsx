@@ -18,15 +18,29 @@ import { plantas as plantasPorRegion } from '@/plantas';
 import { renderPlanta } from '@/components/RenderPlanta';
 
 import { userProyect } from '@/data/userProyect';
+import { useRouter } from 'expo-router';
 
 const UserScreen = () => {
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split('T')[0]
   ); // Fecha en formato YYYY-MM-DD
   const [projects] = useState(userProyect.projects);
-
   const [isExpanded, setIsExpanded] = useState(false); // Estado para controlar el acordeón
   const [selectedRegion, setSelectedRegion] = useState('Loreto');
+
+  const router = useRouter();
+
+  const CrearProyecto = () => {
+    router.push('/proyecto/crear');
+  };
+
+  const EditarProyecto = (id: string) => {
+    console.log(`Editar proyecto con ID: ${id}`);
+    router.push(`/proyecto/editar?id=${id}`);
+  };
+  const VerDetalles = (id: string) => {
+    router.push(`/proyecto/detalles?id=${id}`);
+  };
 
   // Marcadores para fechas importantes
   const markedDates = {
@@ -49,6 +63,34 @@ const UserScreen = () => {
             <Text style={styles.editProfileText}>Editar perfil</Text>
           </TouchableOpacity>
         </View>
+      </View>
+
+      {/* Botones adicionales */}
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          marginVertical: 20,
+        }}
+      >
+        <TouchableOpacity
+          style={styles.newProjectButton}
+          onPress={() => CrearProyecto()}
+        >
+          <Text style={styles.newProjectButtonText}>Crear Proyecto</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.newProjectButton}
+          onPress={() => EditarProyecto('1')}
+        >
+          <Text style={styles.newProjectButtonText}>Editar Proyecto</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.newProjectButton}
+          onPress={() => VerDetalles('1')}
+        >
+          <Text style={styles.newProjectButtonText}>Ver Detalles</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Selector de Región */}
@@ -237,7 +279,7 @@ const styles = StyleSheet.create({
   newProjectButtonText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 10,
   },
   regionTitle: {
     fontSize: 24,

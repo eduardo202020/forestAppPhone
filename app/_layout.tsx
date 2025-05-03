@@ -1,109 +1,31 @@
-import 'react-native-gesture-handler';
+import { useFonts } from 'expo-font';
+import { Stack, Slot } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from 'react';
+import 'react-native-reanimated';
 
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Drawer } from 'expo-router/drawer';
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+SplashScreen.preventAutoHideAsync();
 
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'; // Asegúrate de importar los iconos que necesitas
+export default function RootLayout() {
+  const [loaded] = useFonts({
+    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+  });
 
-import CustomDrawerContent from '@/components/CustomDrawer';
-import { StatusBar } from 'expo-status-bar';
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
 
-export default function Layout() {
+  if (!loaded) {
+    return null;
+  }
+
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <StatusBar style="auto" />
-      <Drawer
-        screenOptions={{
-          headerShown: true,
-          drawerHideStatusBarOnOpen: true,
-          drawerActiveTintColor: '#fff',
-          drawerActiveBackgroundColor: '#5363df',
-          drawerItemStyle: {
-            borderRadius: 10,
-          },
-        }}
-        drawerContent={(props) => <CustomDrawerContent {...props} />}
-        initialRouteName="index"
-      >
-        {/* Mi Proyecto */}
-        <Drawer.Screen
-          name="index"
-          options={{
-            drawerLabel: 'Mi Proyecto',
-            title: 'Mi Proyecto',
-            drawerIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="home" size={size} color={color} />
-            ),
-          }}
-        />
-
-        {/* Calendario */}
-        <Drawer.Screen
-          name="calendario"
-          options={{
-            drawerLabel: 'Calendario',
-            title: 'Calendario de Mantenimiento',
-            drawerIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="calendar"
-                size={size}
-                color={color}
-              />
-            ),
-          }}
-        />
-        {/* Pasos */}
-        <Drawer.Screen
-          name="pasos"
-          options={{
-            drawerLabel: 'Pasos',
-            title: 'Pasos del Método Miyawaki',
-            drawerIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="check-circle"
-                size={size}
-                color={color}
-              />
-            ),
-          }}
-        />
-        {/* Compost y Bocashi */}
-        <Drawer.Screen
-          name="compost"
-          options={{
-            drawerLabel: 'Compost y Bocashi',
-            title: 'Compost y Bocashi',
-            drawerIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="water" size={size} color={color} />
-            ),
-          }}
-        />
-        {/* Red Social */}
-        <Drawer.Screen
-          name="social"
-          options={{
-            drawerLabel: 'Red Social',
-            title: 'Red Social',
-            drawerIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="account-group"
-                size={size}
-                color={color}
-              />
-            ),
-          }}
-        />
-        <Drawer.Screen
-          name="ajustes"
-          options={{
-            drawerLabel: 'Ajustes',
-            title: 'Ajustes',
-            drawerIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="cog" size={size} color={color} />
-            ),
-          }}
-        />
-      </Drawer>
-    </GestureHandlerRootView>
+    <Stack>
+      <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+      <Stack.Screen name="+not-found" />
+    </Stack>
   );
 }
