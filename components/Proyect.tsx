@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Card, ProgressBar } from 'react-native-paper';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+// import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 import { Projecto } from '@/data/proyectos';
 
@@ -10,7 +10,7 @@ const Proyect: React.FC<{ proyect: Projecto }> = ({ proyect }) => {
     <Card key={proyect.id} style={styles.projectCard}>
       {/* Contenedor para el ícono flotante */}
       <View style={styles.favoriteIconContainer}>
-        <FontAwesome name="heart-o" size={24} color="#e74c3c" />
+        {/* <FontAwesome name="heart-o" size={24} color="#e74c3c" /> */}
       </View>
       <Card.Title
         title={proyect.name}

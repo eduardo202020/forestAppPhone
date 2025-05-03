@@ -1,0 +1,406 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`debería renderizar correctamente el componente Proyect 1`] = `
+<View
+  collapsable={false}
+  style={
+    {
+      "backgroundColor": "rgba(247, 243, 249, 1)",
+      "borderRadius": 12,
+      "margin": 10,
+      "position": "relative",
+      "shadowColor": "#000",
+      "shadowOffset": {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 0.15,
+      "shadowRadius": 3,
+    }
+  }
+  testID="card-container-outer-layer"
+>
+  <View
+    collapsable={false}
+    style={
+      {
+        "backgroundColor": "rgba(247, 243, 249, 1)",
+        "borderRadius": 12,
+        "elevation": 1,
+        "flex": undefined,
+        "shadowColor": "#000",
+        "shadowOffset": {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 0.3,
+        "shadowRadius": 1,
+      }
+    }
+    testID="card-container"
+  >
+    <View
+      style={
+        [
+          {
+            "flexShrink": 1,
+          },
+          undefined,
+        ]
+      }
+      testID="card"
+    >
+      <View
+        borderRadiusStyles={{}}
+        index={0}
+        siblings={
+          [
+            "View",
+            "Card.Title",
+            "Card.Content",
+            "Card.Actions",
+          ]
+        }
+        style={
+          {
+            "borderRadius": 20,
+            "padding": 5,
+            "position": "absolute",
+            "right": 10,
+            "top": 10,
+            "zIndex": 1,
+          }
+        }
+        total={4}
+      />
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingLeft": 16,
+            },
+            {
+              "minHeight": 72,
+            },
+            undefined,
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "flex": 1,
+                "flexDirection": "column",
+                "justifyContent": "center",
+              },
+            ]
+          }
+        >
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "textAlign": "left",
+                },
+                {
+                  "color": "rgba(28, 27, 31, 1)",
+                  "writingDirection": "ltr",
+                },
+                [
+                  {
+                    "fontFamily": "System",
+                    "fontSize": 16,
+                    "fontWeight": "400",
+                    "letterSpacing": 0.15,
+                    "lineHeight": 24,
+                  },
+                  [
+                    {
+                      "minHeight": 30,
+                      "paddingRight": 16,
+                    },
+                    {
+                      "marginBottom": 0,
+                    },
+                    {
+                      "fontSize": 20,
+                    },
+                  ],
+                ],
+              ]
+            }
+          >
+            Proyecto de Reforestación
+          </Text>
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "textAlign": "left",
+                },
+                {
+                  "color": "rgba(28, 27, 31, 1)",
+                  "writingDirection": "ltr",
+                },
+                [
+                  {
+                    "fontFamily": "System",
+                    "fontSize": 14,
+                    "fontWeight": "400",
+                    "letterSpacing": 0.25,
+                    "lineHeight": 20,
+                  },
+                  [
+                    {
+                      "marginVertical": 0,
+                      "minHeight": 20,
+                      "paddingRight": 16,
+                    },
+                    {
+                      "fontSize": 14,
+                      "fontWeight": "bold",
+                    },
+                  ],
+                ],
+              ]
+            }
+          >
+            Iniciado el 2023-01-01
+          </Text>
+        </View>
+        <View />
+      </View>
+      <View
+        borderRadiusStyles={{}}
+        style={
+          [
+            {
+              "paddingHorizontal": 16,
+            },
+            undefined,
+            {
+              "flexDirection": "column",
+              "gap": 10,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="progressbar"
+          accessibilityState={
+            {
+              "busy": true,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": 100,
+              "min": 0,
+              "now": 50,
+            }
+          }
+          accessible={true}
+          onLayout={[Function]}
+          style={false}
+          testID="progress-bar"
+        >
+          <View
+            collapsable={false}
+            style={
+              {
+                "backgroundColor": "rgba(231, 224, 236, 1)",
+                "height": 4,
+                "opacity": 0,
+                "overflow": "hidden",
+              }
+            }
+          />
+        </View>
+        <Text
+          style={
+            {
+              "fontSize": 16,
+            }
+          }
+        >
+          Área: 
+          1000
+           m²
+        </Text>
+        <Text
+          style={
+            {
+              "fontSize": 16,
+            }
+          }
+        >
+          Densidad: 
+          10
+           plantas/m²
+        </Text>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#eeeeee",
+                "height": 195,
+                "overflow": "hidden",
+              },
+              {
+                "borderRadius": 12,
+              },
+              {
+                "height": 150,
+                "marginVertical": 10,
+              },
+            ]
+          }
+        >
+          <Image
+            accessibilityIgnoresInvertColors={true}
+            source={
+              {
+                "uri": "https://example.com/img1.jpg",
+              }
+            }
+            style={
+              [
+                {
+                  "flex": 1,
+                  "height": undefined,
+                  "justifyContent": "flex-end",
+                  "padding": 16,
+                  "width": undefined,
+                },
+                {
+                  "borderRadius": 12,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#eeeeee",
+                "height": 195,
+                "overflow": "hidden",
+              },
+              {
+                "borderRadius": 12,
+              },
+              {
+                "height": 150,
+                "marginVertical": 10,
+              },
+            ]
+          }
+        >
+          <Image
+            accessibilityIgnoresInvertColors={true}
+            source={
+              {
+                "uri": "https://example.com/img2.jpg",
+              }
+            }
+            style={
+              [
+                {
+                  "flex": 1,
+                  "height": undefined,
+                  "justifyContent": "flex-end",
+                  "padding": 16,
+                  "width": undefined,
+                },
+                {
+                  "borderRadius": 12,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        borderRadiusStyles={{}}
+        index={3}
+        siblings={
+          [
+            "View",
+            "Card.Title",
+            "Card.Content",
+            "Card.Actions",
+          ]
+        }
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "padding": 8,
+            },
+            undefined,
+            {
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+        total={4}
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "marginLeft": 8,
+              "opacity": 1,
+            }
+          }
+        >
+          <Text
+            style={
+              {
+                "color": "#3498db",
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Ver detalles
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
