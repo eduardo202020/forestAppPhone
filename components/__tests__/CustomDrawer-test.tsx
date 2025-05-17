@@ -1,13 +1,18 @@
 import React from 'react';
-import { Text } from 'react-native';
 import renderer from 'react-test-renderer';
+import CustomDrawerContent from '../CustomDrawer';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-function CustomDrawer() {
-  return <Text>Test component funcionando</Text>;
-}
-
-// Mock de react-native-gesture-handler
-test('TestComponent se renderiza sin errores', () => {
-  const tree = renderer.create(<CustomDrawer />).toJSON();
-  expect(tree).toMatchSnapshot();
+describe('CustomDrawerContent', () => {
+  it('renderiza correctamente el drawer', () => {
+    const props = { navigation: { closeDrawer: jest.fn() } };
+    const tree = renderer
+      .create(
+        <SafeAreaProvider>
+          <CustomDrawerContent {...props} />
+        </SafeAreaProvider>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

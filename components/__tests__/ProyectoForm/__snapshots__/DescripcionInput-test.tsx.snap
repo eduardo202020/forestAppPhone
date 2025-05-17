@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DescripcionInput muestra el error si existe 1`] = `
+[
+  <TextInput
+    editable={true}
+    multiline={true}
+    onChangeText={[Function]}
+    placeholder="Descripción"
+    style={
+      [
+        {
+          "backgroundColor": "#f9f9f9",
+          "borderColor": "#ccc",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "fontSize": 16,
+          "marginBottom": 12,
+          "padding": 10,
+        },
+        {
+          "minHeight": 60,
+        },
+      ]
+    }
+    value=""
+  />,
+  <Text
+    style={
+      {
+        "color": "red",
+        "fontSize": 13,
+        "marginBottom": 8,
+      }
+    }
+  >
+    Campo requerido
+  </Text>,
+]
+`;
+
+exports[`DescripcionInput se renderiza sin errores 1`] = `
+<TextInput
+  editable={true}
+  multiline={true}
+  onChangeText={[Function]}
+  placeholder="Descripción"
+  style={
+    [
+      {
+        "backgroundColor": "#f9f9f9",
+        "borderColor": "#ccc",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "fontSize": 16,
+        "marginBottom": 12,
+        "padding": 10,
+      },
+      {
+        "minHeight": 60,
+      },
+    ]
+  }
+  value="desc"
+/>
+`;

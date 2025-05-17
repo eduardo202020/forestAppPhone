@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegionPicker muestra el error si existe 1`] = `
+[
+  <View
+    style={
+      {
+        "backgroundColor": "#f9f9f9",
+        "borderColor": "#ccc",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "fontSize": 16,
+        "marginBottom": 12,
+        "padding": 10,
+      }
+    }
+  >
+    <RNCPicker
+      items={
+        [
+          {
+            "label": "Selecciona una región",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "",
+          },
+          {
+            "label": "Loreto",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "Loreto",
+          },
+          {
+            "label": "Cusco",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "Cusco",
+          },
+          {
+            "label": "Puno",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "Puno",
+          },
+          {
+            "label": "Madre de Dios",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "Madre de Dios",
+          },
+          {
+            "label": "Amazonas",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "Amazonas",
+          },
+          {
+            "label": "San Martín",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "San Martín",
+          },
+        ]
+      }
+      numberOfLines={1}
+      onChange={[Function]}
+      selectedIndex={0}
+      style={
+        [
+          {
+            "height": 216,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>,
+  <Text
+    style={
+      {
+        "color": "red",
+        "fontSize": 13,
+        "marginBottom": 8,
+      }
+    }
+  >
+    Campo requerido
+  </Text>,
+]
+`;
+
+exports[`RegionPicker se renderiza sin errores 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "#f9f9f9",
+      "borderColor": "#ccc",
+      "borderRadius": 8,
+      "borderWidth": 1,
+      "fontSize": 16,
+      "marginBottom": 12,
+      "padding": 10,
+    }
+  }
+>
+  <RNCPicker
+    items={
+      [
+        {
+          "label": "Selecciona una región",
+          "testID": undefined,
+          "textColor": undefined,
+          "value": "",
+        },
+        {
+          "label": "Loreto",
+          "testID": undefined,
+          "textColor": undefined,
+          "value": "Loreto",
+        },
+        {
+          "label": "Cusco",
+          "testID": undefined,
+          "textColor": undefined,
+          "value": "Cusco",
+        },
+        {
+          "label": "Puno",
+          "testID": undefined,
+          "textColor": undefined,
+          "value": "Puno",
+        },
+        {
+          "label": "Madre de Dios",
+          "testID": undefined,
+          "textColor": undefined,
+          "value": "Madre de Dios",
+        },
+        {
+          "label": "Amazonas",
+          "testID": undefined,
+          "textColor": undefined,
+          "value": "Amazonas",
+        },
+        {
+          "label": "San Martín",
+          "testID": undefined,
+          "textColor": undefined,
+          "value": "San Martín",
+        },
+      ]
+    }
+    numberOfLines={1}
+    onChange={[Function]}
+    selectedIndex={0}
+    style={
+      [
+        {
+          "height": 216,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;

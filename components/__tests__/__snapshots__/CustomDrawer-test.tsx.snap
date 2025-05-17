@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TestComponent se renderiza sin errores 1`] = `
-<Text>
-  Test component funcionando
-</Text>
+exports[`CustomDrawerContent renderiza correctamente el drawer 1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+/>
 `;

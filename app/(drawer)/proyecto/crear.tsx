@@ -11,6 +11,7 @@ import { useNavigation, useRouter } from 'expo-router';
 import { proyectosData } from '@/data/proyectos';
 import { Proyecto } from '@/data/proyectos'; // Asegúrate de que Proyecto esté bien tipado
 import { regionesCoords } from '@/data/regionesCoords';
+import ProyectoForm from '@/components/ProyectoForm';
 
 const CrearProyecto = () => {
   const router = useRouter();
@@ -120,101 +121,29 @@ const CrearProyecto = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>Crear Proyecto</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Nombre del proyecto"
-        value={nombre}
-        onChangeText={setNombre}
+      <ProyectoForm
+        nombre={nombre}
+        setNombre={setNombre}
+        region={region}
+        setRegion={setRegion}
+        descripcion={descripcion}
+        setDescripcion={setDescripcion}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+        selectedLocation={selectedLocation}
+        setSelectedLocation={setSelectedLocation}
+        ubicacion={ubicacion}
+        setUbicacion={setUbicacion}
+        imagenes={imagenes}
+        setModalVisible={setModalVisible}
+        modalVisible={modalVisible}
+        errores={errores}
+        mapRef={mapRef}
+        onMapPress={handleMapPress}
+        onRegionChange={handleRegionChange}
+        editable={true}
+        horizontalImages={false}
       />
-      {errores.nombre && <Text style={styles.errorText}>{errores.nombre}</Text>}
-      <Picker
-        selectedValue={region}
-        onValueChange={handleRegionChange}
-        style={styles.input}
-      >
-        <Picker.Item label="Selecciona una región" value="" />
-        <Picker.Item label="Loreto" value="Loreto" />
-        <Picker.Item label="Cusco" value="Cusco" />
-        <Picker.Item label="Puno" value="Puno" />
-        <Picker.Item label="Madre de Dios" value="Madre de Dios" />
-        <Picker.Item label="Amazonas" value="Amazonas" />
-        <Picker.Item label="San Martín" value="San Martín" />
-      </Picker>
-      {errores.region && <Text style={styles.errorText}>{errores.region}</Text>}
-      <Text style={styles.label}>Ubicación</Text>
-      <MapView
-        ref={mapRef}
-        style={styles.map}
-        initialRegion={{
-          latitude: location.latitude,
-          longitude: location.longitude,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-        onPress={handleMapPress}
-      >
-        {selectedLocation && <Marker coordinate={selectedLocation} />}
-      </MapView>
-      {errores.ubicacion && (
-        <Text style={styles.errorText}>{errores.ubicacion}</Text>
-      )}
-      <Text style={styles.label}>Fecha de Cultivo</Text>
-      <Calendar
-        onDayPress={(day: { dateString: string }) =>
-          setSelectedDate(day.dateString)
-        }
-        markedDates={
-          selectedDate
-            ? { [selectedDate]: { selected: true, selectedColor: '#2ecc71' } }
-            : {}
-        }
-        style={{ marginBottom: 16 }}
-      />
-      <Text style={styles.ubicacionText}>
-        {selectedDate
-          ? `Seleccionada: ${selectedDate}`
-          : 'Selecciona una fecha'}
-      </Text>
-      {errores.fecha && <Text style={styles.errorText}>{errores.fecha}</Text>}
-      <TextInput
-        style={[styles.input, { minHeight: 60 }]}
-        placeholder="Descripción"
-        value={descripcion}
-        onChangeText={setDescripcion}
-        multiline
-      />
-      {errores.descripcion && (
-        <Text style={styles.errorText}>{errores.descripcion}</Text>
-      )}
-      {/* Área para imágenes (cuadro gris) */}
-      <Text style={styles.label}>Imágenes</Text>
-      <View style={styles.imagesRow}>
-        {imagenes.map((img, idx) => (
-          <Pressable
-            key={idx}
-            style={styles.imageBox}
-            onPress={() => setModalVisible(true)}
-          >
-            <Text style={{ color: '#888', textAlign: 'center' }}>
-              Imagen {idx + 1}
-            </Text>
-          </Pressable>
-        ))}
-      </View>
-      <Modal
-        visible={modalVisible}
-        transparent
-        animationType="fade"
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text>Funcionalidad para añadir imágenes próximamente</Text>
-            <Button title="Cerrar" onPress={() => setModalVisible(false)} />
-          </View>
-        </View>
-      </Modal>
       <Button title="Crear Proyecto" onPress={handleCrear} color="#2ecc71" />
       <View style={{ height: 32 }} />
     </ScrollView>
