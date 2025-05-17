@@ -6,16 +6,11 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+
 import { useRouter } from 'expo-router';
-import { proyectosData } from '@/data/proyectos';
 
 const ProyectoIndex = () => {
   const router = useRouter();
-  const [proyectos, setProyectos] = useState(proyectosData);
-
-  const handleVerDetalles = (id: string) => {
-    router.push(`/proyecto/detalles?id=${id}`);
-  };
 
   const handleCrearProyecto = () => {
     router.push('/proyecto/crear');
@@ -30,28 +25,6 @@ const ProyectoIndex = () => {
       <TouchableOpacity style={styles.button} onPress={handleCrearProyecto}>
         <Text style={styles.buttonText}>Crear Proyecto</Text>
       </TouchableOpacity>
-      <FlatList
-        data={proyectos}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.card}
-            onPress={() => handleVerDetalles(item.id)}
-          >
-            <Text style={styles.projectName}>{item.nombre}</Text>
-            <Text style={styles.projectDesc}>{item.descripcion}</Text>
-            <Text style={styles.projectRegion}>Región: {item.region}</Text>
-            <Text style={styles.projectUbicacion}>
-              Ubicación: {item.ubicacion}
-            </Text>
-            <View style={styles.imagesRow}>
-              {imagenesPrueba.map((img, idx) => (
-                <View key={idx} style={styles.imageBox} />
-              ))}
-            </View>
-          </TouchableOpacity>
-        )}
-      />
     </View>
   );
 };

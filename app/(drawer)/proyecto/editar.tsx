@@ -44,7 +44,7 @@ const EditarProyecto = () => {
 
   useEffect(() => {
     if (!proyecto) {
-      router.push('/index'); // Si no encontramos el proyecto, redirigimos a la lista de proyectos
+      router.push('/proyecto'); // Redirigir correctamente a la lista de proyectos
     }
   }, [proyecto, router]);
 
