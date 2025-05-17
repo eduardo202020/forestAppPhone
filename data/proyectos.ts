@@ -19,8 +19,8 @@ export interface Proyecto {
   descripcion: string;
   plantas: Planta[];
   estado: 'En progreso' | 'Pendiente' | 'Completado';
-  imagenes: string[]; // Añadido para imágenes
-  location?: { latitude: number; longitude: number }; // Añadido para mapa
+  imagenes: string[];
+  location?: { latitude: number; longitude: number };
 }
 
 // Datos de ejemplo para los proyectos con la nueva estructura de plantas

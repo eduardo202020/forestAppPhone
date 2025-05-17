@@ -1,36 +1,66 @@
 import {
   View,
   Text,
-  ScrollView,
+  StyleSheet,
   FlatList,
   TouchableOpacity,
-  StyleSheet,
+  Image,
 } from 'react-native';
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { proyectosData } from '@/data/proyectos';
+import { proyectosData, Proyecto } from '@/data/proyectos';
 
 const index = () => {
   const router = useRouter();
-  const imagenesPrueba = [1, 2, 3, 4, 5];
   const [proyectos, setProyectos] = useState(proyectosData);
 
   const handleVerDetalles = (id: string) => {
     router.push(`/proyecto/detalles?id=${id}`);
   };
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Proyectos</Text>
+  // Componente reutilizable para mostrar la lista de proyectos
+  const ProyectoList = ({
+    proyectos,
+    onVerDetalles,
+  }: {
+    proyectos: Proyecto[];
+    onVerDetalles: (id: string) => void;
+  }) => {
+    const renderImages = (imagenes: string[] | undefined) => {
+      if (imagenes && imagenes.length > 0) {
+        return (
+          <View style={styles.imagesRow}>
+            {imagenes.slice(0, 3).map((img, idx) => (
+              <Image
+                key={idx}
+                source={{ uri: img }}
+                style={styles.imageBox}
+                resizeMode="cover"
+              />
+            ))}
+          </View>
+        );
+      } else {
+        return (
+          <View style={styles.imagesRow}>
+            {[1, 2, 3].map((_, idx) => (
+              <View key={idx} style={styles.imageBox} />
+            ))}
+          </View>
+        );
+      }
+    };
+
+    return (
       <FlatList
-        data={proyectos}
-        keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
+        data={proyectos}
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.card}
-            onPress={() => handleVerDetalles(item.id)}
+            onPress={() => onVerDetalles(item.id)}
           >
             <Text style={styles.projectName}>{item.nombre}</Text>
             <Text style={styles.projectDesc}>{item.descripcion}</Text>
@@ -38,14 +68,18 @@ const index = () => {
             <Text style={styles.projectUbicacion}>
               Ubicación: {item.ubicacion}
             </Text>
-            <View style={styles.imagesRow}>
-              {imagenesPrueba.map((img, idx) => (
-                <View key={idx} style={styles.imageBox} />
-              ))}
-            </View>
+            <Text style={styles.projectRegion}>Fecha: {item.fecha}</Text>
+            {renderImages(item.imagenes)}
           </TouchableOpacity>
         )}
+        keyExtractor={(item) => item.id.toString()}
       />
+    );
+  };
+
+  return (
+    <View style={styles.container}>
+      <ProyectoList proyectos={proyectos} onVerDetalles={handleVerDetalles} />
     </View>
   );
 };
@@ -53,7 +87,7 @@ const index = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    paddingHorizontal: 16,
     backgroundColor: '#fff',
   },
   title: {
@@ -97,14 +131,14 @@ const styles = StyleSheet.create({
   },
   imagesRow: {
     flexDirection: 'row',
-    gap: 8,
     marginTop: 8,
   },
   imageBox: {
-    width: 60,
-    height: 60,
-    backgroundColor: '#e0e0e0',
-    borderRadius: 8,
+    flex: 1,
+    height: 100,
+    marginRight: 4,
+    backgroundColor: '#ccc',
+    borderRadius: 4,
   },
 });
 

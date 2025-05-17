@@ -10,6 +10,7 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { useNavigation, useRouter } from 'expo-router';
 import { proyectosData } from '@/data/proyectos';
 import { Proyecto } from '@/data/proyectos'; // Asegúrate de que Proyecto esté bien tipado
+import { regionesCoords } from '@/data/regionesCoords';
 
 const CrearProyecto = () => {
   const router = useRouter();
@@ -64,6 +65,8 @@ const CrearProyecto = () => {
   };
 
   // Función para crear un nuevo proyecto
+  // Al crear un proyecto, se debe crear con la estructura completa de Proyecto
+  // Por ahora, plantas será un array vacío, pero compatible con la interfaz
   const handleCrear = () => {
     const nuevosErrores = validarCampos();
     setErrores(nuevosErrores);
@@ -77,7 +80,7 @@ const CrearProyecto = () => {
       fecha: selectedDate,
       region,
       descripcion,
-      plantas: [],
+      plantas: [], // Aquí podrías permitir agregar plantas reales en el futuro
       estado: 'Pendiente',
       imagenes,
       location: selectedLocation || undefined,
@@ -93,6 +96,28 @@ const CrearProyecto = () => {
     setSelectedLocation(coord);
   };
 
+  const mapRef = React.useRef<MapView>(null);
+
+  const handleRegionChange = (itemValue: string) => {
+    setRegion(itemValue);
+    if (regionesCoords[itemValue]) {
+      setLocation(regionesCoords[itemValue]);
+      setSelectedLocation(regionesCoords[itemValue]);
+      setUbicacion(
+        `${regionesCoords[itemValue].latitude}, ${regionesCoords[itemValue].longitude}`
+      );
+      // Centrar el mapa animadamente
+      mapRef.current?.animateToRegion(
+        {
+          ...regionesCoords[itemValue],
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        },
+        800
+      );
+    }
+  };
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Crear Proyecto</Text>
@@ -105,7 +130,7 @@ const CrearProyecto = () => {
       {errores.nombre && <Text style={styles.errorText}>{errores.nombre}</Text>}
       <Picker
         selectedValue={region}
-        onValueChange={(itemValue) => setRegion(itemValue)}
+        onValueChange={handleRegionChange}
         style={styles.input}
       >
         <Picker.Item label="Selecciona una región" value="" />
@@ -119,6 +144,7 @@ const CrearProyecto = () => {
       {errores.region && <Text style={styles.errorText}>{errores.region}</Text>}
       <Text style={styles.label}>Ubicación</Text>
       <MapView
+        ref={mapRef}
         style={styles.map}
         initialRegion={{
           latitude: location.latitude,

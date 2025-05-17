@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   View,
   Text,
-  FlatList,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
@@ -16,15 +15,16 @@ const ProyectoIndex = () => {
     router.push('/proyecto/crear');
   };
 
-  // Imágenes de prueba (cuadros grises)
-  const imagenesPrueba = [1, 2, 3];
-
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Proyectos</Text>
+      <Text style={styles.title}>Bienvenido a Mi Proyecto</Text>
       <TouchableOpacity style={styles.button} onPress={handleCrearProyecto}>
         <Text style={styles.buttonText}>Crear Proyecto</Text>
       </TouchableOpacity>
+      {/* Aquí podrías mostrar un resumen, estadísticas o mensaje personalizado, pero NO el listado completo */}
+      <Text style={{ color: '#888', marginTop: 24, textAlign: 'center' }}>
+        Aquí verás un resumen de tu proyecto principal o tus estadísticas.
+      </Text>
     </View>
   );
 };
@@ -51,39 +51,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
-  },
-  card: {
-    backgroundColor: '#f0f0f0',
-    padding: 16,
-    borderRadius: 8,
-    marginBottom: 12,
-  },
-  projectName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  projectDesc: {
-    fontSize: 14,
-    marginBottom: 4,
-  },
-  projectRegion: {
-    fontSize: 12,
-    color: '#888',
-  },
-  projectUbicacion: {
-    fontSize: 12,
-    color: '#888',
-  },
-  imagesRow: {
-    flexDirection: 'row',
-    gap: 8,
-    marginTop: 8,
-  },
-  imageBox: {
-    width: 60,
-    height: 60,
-    backgroundColor: '#e0e0e0',
-    borderRadius: 8,
   },
 });
 
