@@ -1,0 +1,532 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Integración ProyectoForm muestra errores de validación en todos los campos 1`] = `
+[
+  <TextInput
+    editable={true}
+    onChangeText={[MockFunction]}
+    placeholder="Nombre del proyecto"
+    style={
+      {
+        "backgroundColor": "#f9f9f9",
+        "borderColor": "#ccc",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "fontSize": 16,
+        "marginBottom": 12,
+        "padding": 10,
+      }
+    }
+    value=""
+  />,
+  <Text
+    style={
+      {
+        "color": "red",
+        "fontSize": 13,
+        "marginBottom": 8,
+      }
+    }
+  >
+    Falta nombre
+  </Text>,
+  <picker-mock
+    enabled={true}
+    onValueChange={[MockFunction]}
+    selectedValue=""
+    style={
+      {
+        "backgroundColor": "#f9f9f9",
+        "borderColor": "#ccc",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "fontSize": 16,
+        "marginBottom": 12,
+        "padding": 10,
+      }
+    }
+  >
+    <picker-item-mock
+      label="Selecciona una región"
+      value=""
+    />
+    <picker-item-mock
+      label="Loreto"
+      value="Loreto"
+    />
+    <picker-item-mock
+      label="Cusco"
+      value="Cusco"
+    />
+    <picker-item-mock
+      label="Puno"
+      value="Puno"
+    />
+    <picker-item-mock
+      label="Madre de Dios"
+      value="Madre de Dios"
+    />
+    <picker-item-mock
+      label="Amazonas"
+      value="Amazonas"
+    />
+    <picker-item-mock
+      label="San Martín"
+      value="San Martín"
+    />
+  </picker-mock>,
+  <Text
+    style={
+      {
+        "color": "red",
+        "fontSize": 13,
+        "marginBottom": 8,
+      }
+    }
+  >
+    Falta región
+  </Text>,
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
+  >
+    Ubicación
+  </Text>,
+  <mapview-mock
+    initialRegion={
+      {
+        "latitude": -12.0464,
+        "latitudeDelta": 0.0922,
+        "longitude": -77.0428,
+        "longitudeDelta": 0.0421,
+      }
+    }
+    onPress={[MockFunction]}
+    style={
+      {
+        "borderRadius": 10,
+        "height": 180,
+        "marginBottom": 10,
+        "width": "100%",
+      }
+    }
+  />,
+  <Text
+    style={
+      {
+        "color": "#888",
+        "fontSize": 12,
+        "marginBottom": 10,
+      }
+    }
+  >
+    Toca el mapa para seleccionar una ubicación
+  </Text>,
+  <Text
+    style={
+      {
+        "color": "red",
+        "fontSize": 13,
+        "marginBottom": 8,
+      }
+    }
+  >
+    Falta ubicación
+  </Text>,
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
+  >
+    Fecha de Cultivo
+  </Text>,
+  <calendar-mock
+    current=""
+    markedDates={{}}
+    onDayPress={[Function]}
+    style={
+      {
+        "marginBottom": 16,
+      }
+    }
+  />,
+  <Text
+    style={
+      {
+        "color": "#888",
+        "fontSize": 12,
+        "marginBottom": 10,
+      }
+    }
+  >
+    Selecciona una fecha
+  </Text>,
+  <Text
+    style={
+      {
+        "color": "red",
+        "fontSize": 13,
+        "marginBottom": 8,
+      }
+    }
+  >
+    Falta fecha
+  </Text>,
+  <TextInput
+    editable={true}
+    multiline={true}
+    onChangeText={[MockFunction]}
+    placeholder="Descripción"
+    style={
+      [
+        {
+          "backgroundColor": "#f9f9f9",
+          "borderColor": "#ccc",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "fontSize": 16,
+          "marginBottom": 12,
+          "padding": 10,
+        },
+        {
+          "minHeight": 60,
+        },
+      ]
+    }
+    value=""
+  />,
+  <Text
+    style={
+      {
+        "color": "red",
+        "fontSize": 13,
+        "marginBottom": 8,
+      }
+    }
+  >
+    Falta descripción
+  </Text>,
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
+  >
+    Imágenes
+  </Text>,
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "gap": 8,
+        "marginBottom": 16,
+      }
+    }
+  >
+    <pressable-mock
+      onPress={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#e0e0e0",
+          "borderRadius": 10,
+          "height": 100,
+          "justifyContent": "center",
+          "marginBottom": 16,
+          "marginRight": 8,
+          "width": 100,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#888",
+            "textAlign": "center",
+          }
+        }
+      >
+        Imagen 
+        1
+      </Text>
+    </pressable-mock>
+    <pressable-mock
+      onPress={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#e0e0e0",
+          "borderRadius": 10,
+          "height": 100,
+          "justifyContent": "center",
+          "marginBottom": 16,
+          "marginRight": 8,
+          "width": 100,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#888",
+            "textAlign": "center",
+          }
+        }
+      >
+        Imagen 
+        2
+      </Text>
+    </pressable-mock>
+  </View>,
+]
+`;
+
+exports[`Integración ProyectoForm renderiza el formulario completo sin errores 1`] = `
+[
+  <TextInput
+    editable={true}
+    onChangeText={[MockFunction]}
+    placeholder="Nombre del proyecto"
+    style={
+      {
+        "backgroundColor": "#f9f9f9",
+        "borderColor": "#ccc",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "fontSize": 16,
+        "marginBottom": 12,
+        "padding": 10,
+      }
+    }
+    value=""
+  />,
+  <picker-mock
+    enabled={true}
+    onValueChange={[MockFunction]}
+    selectedValue=""
+    style={
+      {
+        "backgroundColor": "#f9f9f9",
+        "borderColor": "#ccc",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "fontSize": 16,
+        "marginBottom": 12,
+        "padding": 10,
+      }
+    }
+  >
+    <picker-item-mock
+      label="Selecciona una región"
+      value=""
+    />
+    <picker-item-mock
+      label="Loreto"
+      value="Loreto"
+    />
+    <picker-item-mock
+      label="Cusco"
+      value="Cusco"
+    />
+    <picker-item-mock
+      label="Puno"
+      value="Puno"
+    />
+    <picker-item-mock
+      label="Madre de Dios"
+      value="Madre de Dios"
+    />
+    <picker-item-mock
+      label="Amazonas"
+      value="Amazonas"
+    />
+    <picker-item-mock
+      label="San Martín"
+      value="San Martín"
+    />
+  </picker-mock>,
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
+  >
+    Ubicación
+  </Text>,
+  <mapview-mock
+    initialRegion={
+      {
+        "latitude": -12.0464,
+        "latitudeDelta": 0.0922,
+        "longitude": -77.0428,
+        "longitudeDelta": 0.0421,
+      }
+    }
+    onPress={[MockFunction]}
+    style={
+      {
+        "borderRadius": 10,
+        "height": 180,
+        "marginBottom": 10,
+        "width": "100%",
+      }
+    }
+  />,
+  <Text
+    style={
+      {
+        "color": "#888",
+        "fontSize": 12,
+        "marginBottom": 10,
+      }
+    }
+  >
+    Toca el mapa para seleccionar una ubicación
+  </Text>,
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
+  >
+    Fecha de Cultivo
+  </Text>,
+  <calendar-mock
+    current=""
+    markedDates={{}}
+    onDayPress={[Function]}
+    style={
+      {
+        "marginBottom": 16,
+      }
+    }
+  />,
+  <Text
+    style={
+      {
+        "color": "#888",
+        "fontSize": 12,
+        "marginBottom": 10,
+      }
+    }
+  >
+    Selecciona una fecha
+  </Text>,
+  <TextInput
+    editable={true}
+    multiline={true}
+    onChangeText={[MockFunction]}
+    placeholder="Descripción"
+    style={
+      [
+        {
+          "backgroundColor": "#f9f9f9",
+          "borderColor": "#ccc",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "fontSize": 16,
+          "marginBottom": 12,
+          "padding": 10,
+        },
+        {
+          "minHeight": 60,
+        },
+      ]
+    }
+    value=""
+  />,
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
+  >
+    Imágenes
+  </Text>,
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "gap": 8,
+        "marginBottom": 16,
+      }
+    }
+  >
+    <pressable-mock
+      onPress={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#e0e0e0",
+          "borderRadius": 10,
+          "height": 100,
+          "justifyContent": "center",
+          "marginBottom": 16,
+          "marginRight": 8,
+          "width": 100,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#888",
+            "textAlign": "center",
+          }
+        }
+      >
+        Imagen 
+        1
+      </Text>
+    </pressable-mock>
+    <pressable-mock
+      onPress={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#e0e0e0",
+          "borderRadius": 10,
+          "height": 100,
+          "justifyContent": "center",
+          "marginBottom": 16,
+          "marginRight": 8,
+          "width": 100,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#888",
+            "textAlign": "center",
+          }
+        }
+      >
+        Imagen 
+        2
+      </Text>
+    </pressable-mock>
+  </View>,
+]
+`;

@@ -1,26 +1,16 @@
-import { Link, Stack } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect } from 'react';
+import { useRouter, useRootNavigationState } from 'expo-router';
 
-export default function NotFoundScreen() {
-  return (
-    <>
-      <Stack.Screen options={{ title: 'Oops!' }} />
-      <View style={styles.container}>
-        <Text>Ruta no encontrada</Text>
-      </View>
-    </>
-  );
+export default function NotFoundRedirect() {
+  const router = useRouter();
+  const navReady = useRootNavigationState();
+
+  useEffect(() => {
+    if (navReady?.key) {
+      router.replace('/proyecto');
+    }
+  }, [navReady, router]);
+
+  // Pantalla completamente en blanco mientras se redirige
+  return null;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  link: {
-    marginTop: 15,
-    paddingVertical: 15,
-  },
-});

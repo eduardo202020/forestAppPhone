@@ -1,0 +1,282 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImagenesInput se renderiza en modo horizontal 1`] = `
+[
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
+  >
+    Imágenes
+  </Text>,
+  <RCTScrollView
+    horizontal={true}
+    style={
+      {
+        "flexDirection": "row",
+        "gap": 8,
+        "marginBottom": 16,
+      }
+    }
+  >
+    <View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#e0e0e0",
+            "borderRadius": 10,
+            "height": 100,
+            "justifyContent": "center",
+            "marginBottom": 16,
+            "marginRight": 8,
+            "width": 100,
+          }
+        }
+      >
+        <Image
+          source={
+            {
+              "uri": "https://test/1.png",
+            }
+          }
+          style={
+            {
+              "borderRadius": 10,
+              "height": "100%",
+              "width": "100%",
+            }
+          }
+        />
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#e0e0e0",
+            "borderRadius": 10,
+            "height": 100,
+            "justifyContent": "center",
+            "marginBottom": 16,
+            "marginRight": 8,
+            "width": 100,
+          }
+        }
+      >
+        <Image
+          source={
+            {
+              "uri": "https://test/2.png",
+            }
+          }
+          style={
+            {
+              "borderRadius": 10,
+              "height": "100%",
+              "width": "100%",
+            }
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>,
+]
+`;
+
+exports[`ImagenesInput se renderiza en modo vertical 1`] = `
+[
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
+  >
+    Imágenes
+  </Text>,
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "gap": 8,
+        "marginBottom": 16,
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#e0e0e0",
+          "borderRadius": 10,
+          "height": 100,
+          "justifyContent": "center",
+          "marginBottom": 16,
+          "marginRight": 8,
+          "width": 100,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#888",
+            "textAlign": "center",
+          }
+        }
+      >
+        Imagen 
+        1
+      </Text>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#e0e0e0",
+          "borderRadius": 10,
+          "height": 100,
+          "justifyContent": "center",
+          "marginBottom": 16,
+          "marginRight": 8,
+          "width": 100,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#888",
+            "textAlign": "center",
+          }
+        }
+      >
+        Imagen 
+        2
+      </Text>
+    </View>
+  </View>,
+]
+`;

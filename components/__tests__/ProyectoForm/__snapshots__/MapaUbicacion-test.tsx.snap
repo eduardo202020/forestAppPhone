@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapaUbicacion muestra el error si existe 1`] = `
+[
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
+  >
+    Ubicación
+  </Text>,
+  <AIRMap
+    initialRegion={
+      {
+        "latitude": -12.0464,
+        "latitudeDelta": 0.0922,
+        "longitude": -77.0428,
+        "longitudeDelta": 0.0421,
+      }
+    }
+    onChange={[Function]}
+    onMapReady={[Function]}
+    region={null}
+    style={
+      {
+        "borderRadius": 10,
+        "height": 180,
+        "marginBottom": 10,
+        "width": "100%",
+      }
+    }
+  />,
+  <Text
+    style={
+      {
+        "color": "#888",
+        "fontSize": 12,
+        "marginBottom": 10,
+      }
+    }
+  >
+    Toca el mapa para seleccionar una ubicación
+  </Text>,
+  <Text
+    style={
+      {
+        "color": "red",
+        "fontSize": 13,
+        "marginBottom": 8,
+      }
+    }
+  >
+    Campo requerido
+  </Text>,
+]
+`;
+
+exports[`MapaUbicacion se renderiza sin errores 1`] = `
+[
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
+  >
+    Ubicación
+  </Text>,
+  <AIRMap
+    initialRegion={
+      {
+        "latitude": -12.0464,
+        "latitudeDelta": 0.0922,
+        "longitude": -77.0428,
+        "longitudeDelta": 0.0421,
+      }
+    }
+    onChange={[Function]}
+    onMapReady={[Function]}
+    region={null}
+    style={
+      {
+        "borderRadius": 10,
+        "height": 180,
+        "marginBottom": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <AIRMapMarker
+      coordinate={
+        {
+          "latitude": -12.0464,
+          "longitude": -77.0428,
+        }
+      }
+      onPress={[Function]}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "position": "absolute",
+          },
+          undefined,
+        ]
+      }
+    />
+  </AIRMap>,
+  <Text
+    style={
+      {
+        "color": "#888",
+        "fontSize": 12,
+        "marginBottom": 10,
+      }
+    }
+  >
+    Ubicación seleccionada: -12.04640, -77.04280
+  </Text>,
+]
+`;

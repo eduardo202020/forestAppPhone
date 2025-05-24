@@ -36,6 +36,21 @@ export default function Layout() {
             ),
           }}
         />
+        {/* Red Social */}
+        <Drawer.Screen
+          name="social"
+          options={{
+            drawerLabel: 'Red Social',
+            title: 'Red Social',
+            drawerIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="account-group"
+                size={size}
+                color={color}
+              />
+            ),
+          }}
+        />
 
         {/* Calendario */}
         <Drawer.Screen
@@ -78,21 +93,7 @@ export default function Layout() {
             ),
           }}
         />
-        {/* Red Social */}
-        <Drawer.Screen
-          name="social"
-          options={{
-            drawerLabel: 'Red Social',
-            title: 'Red Social',
-            drawerIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="account-group"
-                size={size}
-                color={color}
-              />
-            ),
-          }}
-        />
+
         <Drawer.Screen
           name="ajustes"
           options={{
