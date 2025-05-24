@@ -37,6 +37,42 @@ La Fundación Jocotoco desarrolló un proyecto en la Reserva de Buenaventura, ub
 
 **Fuente:** [Reserva de Buenaventura](https://www.telemundofresno.com/especiales/estilo-de-vida/crean-app-para-apadrinar-un-arbol-y-verlo-crecer-a-distancia-en-la-selva/1953552/?utm_source=chatgpt.com)
 
+#### 3. **Ni Meraya**
+
+Ni Meraya es un Área de Conservación Privada ubicada en la región de Loreto, Perú, que promueve la reforestación y la conservación de especies nativas de la Amazonía, contribuyendo a la restauración de los ecosistemas degradados.
+
+**Características principales:**
+
+- **Ubicación:** Loreto, Perú.
+- **Objetivo:** Reforestar y conservar especies nativas de la Amazonía, restaurando ecosistemas y mejorando la biodiversidad local.
+- **Método:** Reforestación con especies nativas, protección de especies en peligro y prácticas de conservación ecológica.
+
+**Fuente:** [Ni Meraya](https://nimeraya.org/es/que-hacemos/?utm_source=chatgpt.com)
+
+#### 4. **Bosque Loyola 79**
+
+El "Bosque Loyola 79" en Santiago, República Dominicana, utiliza la técnica Miyawaki para establecer un microbosque urbano que busca mejorar la calidad del aire y promover la biodiversidad en un área urbana.
+
+**Características principales:**
+
+- **Ubicación:** Santiago, República Dominicana..
+- **Objetivo:** Crear un microbosque urbano que mejore la calidad del aire y fomente la biodiversidad en un entorno urbano.
+- **Método:** Técnica Miyawaki para desarrollar un bosque denso y de rápido crecimiento en zonas urbanas.
+
+**Fuente:** [Bosque Loyola 79](https://botanicodesantiago.com/2022/02/establecen-el-primer-bosque-bajo-el-metodo-miyawaki-en-el-pais/?utm_source=chatgpt.com)
+
+#### 5. **Microbosques Urbanos con el Método Miyawaki**
+
+En Lima, Perú, varios proyectos de microbosques urbanos han sido implementados utilizando la técnica Miyawaki, con el objetivo de reducir la contaminación y aumentar las áreas verdes dentro de las ciudades.
+
+**Características principales:**
+
+- **Ubicación:** Lima, Perú.
+- **Objetivo:** Crear microbosques urbanos para mejorar la calidad del aire, reducir la contaminación y aumentar las áreas verdes.
+- **Método:** Aplicación del método Miyawaki para desarrollar pequeños bosques densos en zonas urbanas.
+
+**Fuente:** [Microbosques Urbanos con el Método Miyawaki](https://www.lima-va.com/2024/11/6-pasos-para-forestar-zonas-urbanas-con.html?utm_source=chatgpt.com)
+
 ---
 
 ## Metodología del Proyecto
@@ -44,6 +80,31 @@ La Fundación Jocotoco desarrolló un proyecto en la Reserva de Buenaventura, ub
 - **Modelo Ágil (Scrum)**: Ya que permite realizar iteraciones rápidas y frecuentes, con entregas constantes.
 - **Metodología de Desarrollo Iterativo**: Entregas rápidas de prototipos funcionales para ajustes según feedback de los usuarios.
 - **GitHub y Herramientas Colaborativas**: Para el manejo de la versión del código, asegurando la colaboración y el seguimiento.
+
+## 🧠 Metodología de Desarrollo
+
+### 📋 Marco Metodológico Principal: Ágil (Scrum)
+
+Utilizamos **Scrum** por su enfoque iterativo e incremental, ideal para el desarrollo de aplicaciones móviles con funcionalidades en constante evolución.
+
+#### Etapas del Proceso:
+- **Sprints de 2 semanas** con entregas funcionales.
+- **Backlog del producto** priorizado con historias de usuario claras (ej. “Como usuario, quiero registrar la fecha de riego para hacer seguimiento…”).
+- **Daily Stand-ups** para coordinar tareas y avances.
+- **Revisión y retrospectiva** al final de cada sprint para mejorar el proceso continuamente.
+
+### 🔁 Metodología de Desarrollo: Iterativa
+
+Complementamos Scrum con **prototipos funcionales frecuentes**. Estos prototipos se evalúan con usuarios reales para recibir feedback rápido y adaptar la app a las necesidades de la comunidad ambiental.
+
+### 🤝 Herramientas Colaborativas
+
+- **GitHub**: Control de versiones y colaboración entre desarrolladores.
+- **Trello/Notion**: Gestión de tareas y sprints.
+- **Figma**: Prototipado UI/UX.
+- **Firebase / Supabase**: Backend como servicio (autenticación, base de datos y almacenamiento).
+
+---
 
 ## Cronograma de 8 semanas
 
@@ -76,6 +137,68 @@ La Fundación Jocotoco desarrolló un proyecto en la Reserva de Buenaventura, ub
 A medida que avances, puedes continuar mejorando la app según el cronograma mencionado.
 
 Recuerda incluir detalles sobre los participantes que colaboraron, el estado actual de tu proyecto, los entregables hasta el momento y los próximos pasos para tu avance.
+
+
+## 🌐 Implementación de la Red Social (semana 4)
+
+La funcionalidad de red social será una parte fundamental de ForestApp para crear comunidad y motivar el seguimiento de los proyectos.
+
+### Funciones clave:
+- **Perfiles de usuario**
+- **Feed de publicaciones**: texto, imágenes, fechas de actividades.
+- **Comentarios y reacciones**
+- **Geolocalización de proyectos públicos**
+- **Sistema de niveles o medallas** por participación
+
+### Tecnologías sugeridas:
+- **React Native** + **Expo** para desarrollo móvil multiplataforma.
+- **Firebase Firestore** como backend para datos en tiempo real.
+- **Firebase Authentication** para inicio de sesión con Google, correo, etc.
+
+
+
+## 🌿 Integración de la Base de Datos de Plantas Amazónicas (semana 5)
+
+### Objetivo:
+Orientar a los usuarios en la **selección de especies nativas** para aplicar correctamente el método Miyawaki según el tipo de suelo, humedad y clima.
+
+### Contenido de la base de datos:
+- Nombre común y científico
+- Tipo de planta (árbol, arbusto, herbácea)
+- Requerimientos de suelo y agua
+- Tiempo estimado de crecimiento
+- Función ecológica (sombra, fijadora de nitrógeno, etc.)
+- Compatibilidad con otras especies
+
+### Fuente de datos:
+- Catálogos botánicos de instituciones como el **Jardín Botánico de Loreto (Perú)**, **Instituto Nacional de Pesquisas da Amazônia (INPA)**, y bases públicas como **GBIF**.
+
+### Implementación técnica:
+- **JSON o SQLite local** para versión offline.
+- **PostgreSQL + Supabase** o **Firebase** para acceso dinámico y remoto.
+- Posibilidad de **filtrado por geolocalización**, para mostrar especies recomendadas por ubicación.
+
+---
+
+## 📱 Funcionalidades Clave de ForestApp
+
+| Funcionalidad         | Descripción                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| Registro y login       | Seguridad mediante autenticación en Firebase.                              |
+| Crear proyecto de bosque | Registro de ubicación, nombre, foto y descripción del terreno.             |
+| Selección de especies  | Recomendaciones basadas en ubicación y condiciones del suelo.              |
+| Registro de actividades | Fechas de riego, limpieza, medición de altura y notas.                     |
+| Red social             | Publicación de avances, comentarios y likes.                               |
+| Estadísticas           | Crecimiento del bosque, número de árboles plantados, impacto estimado.     |
+
+---
+
+## 🚀 Próximos pasos
+
+- [ ] Finalizar el diseño UI/UX.
+- [ ] Crear la base de datos de especies nativas.
+- [ ] Desarrollar el módulo de red social.
+- [ ] Lanzar MVP para pruebas piloto en comunidades amazónicas.
 
 ---
 
