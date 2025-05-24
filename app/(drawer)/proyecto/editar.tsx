@@ -29,6 +29,7 @@ const EditarProyecto = () => {
     longitude: number;
   } | null>(proyecto?.location || null);
   const [ubicacion, setUbicacion] = useState(proyecto?.ubicacion || '');
+  const [errores, setErrores] = useState({});
 
   useEffect(() => {
     if (!proyecto) {
@@ -44,6 +45,18 @@ const EditarProyecto = () => {
 
   const handleGuardar = () => {
     if (!proyecto) return;
+    // Validaciones
+    const nuevosErrores: any = {};
+    if (!nombre) nuevosErrores.nombre = 'El nombre es obligatorio';
+    if (!region) nuevosErrores.region = 'La región es obligatoria';
+    if (!descripcion)
+      nuevosErrores.descripcion = 'La descripción es obligatoria';
+    if (!selectedDate) nuevosErrores.fecha = 'La fecha es obligatoria';
+    if (!selectedLocation)
+      nuevosErrores.ubicacion = 'La ubicación es obligatoria';
+    setErrores(nuevosErrores);
+    if (Object.keys(nuevosErrores).length > 0) return;
+    // Guardar los cambios
     proyecto.nombre = nombre;
     proyecto.region = region;
     proyecto.descripcion = descripcion;
@@ -84,6 +97,7 @@ const EditarProyecto = () => {
         onRegionChange={setRegion}
         editable={true}
         horizontalImages={true}
+        errores={errores}
       />
       <Button title="Guardar Cambios" onPress={handleGuardar} color="#2ecc71" />
       <View style={{ height: 32 }} />
