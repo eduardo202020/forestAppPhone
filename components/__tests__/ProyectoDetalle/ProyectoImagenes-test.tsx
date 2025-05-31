@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { ProyectoImagenes } from '../ProyectoDetalle/ProyectoImagenes';
+import { ProyectoImagenes } from '../../ProyectoDetalle/ProyectoImagenes';
 
 describe('ProyectoImagenes', () => {
   it('renderiza correctamente una lista de imágenes', () => {

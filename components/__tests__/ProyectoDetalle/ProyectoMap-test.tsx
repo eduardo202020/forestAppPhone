@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { ProyectoMap } from '../ProyectoDetalle/ProyectoMap';
+import { ProyectoMap } from '../../ProyectoDetalle/ProyectoMap';
 
 describe('ProyectoMap', () => {
   it('se renderiza correctamente con coordenadas', () => {

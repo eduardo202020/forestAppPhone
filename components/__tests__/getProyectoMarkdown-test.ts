@@ -1,4 +1,4 @@
-import { getProyectoMarkdown } from '../utils/markdown';
+import { getProyectoMarkdown } from '../../utils/markdown';
 
 describe('getProyectoMarkdown', () => {
   it('genera markdown correctamente con todos los campos', () => {
