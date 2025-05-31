@@ -1,26 +1,25 @@
 // app/proyecto/detalles.tsx
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import { useRouter, useNavigation, useLocalSearchParams } from 'expo-router'; // Importar useRoute y useNavigation
+import { useRouter, useNavigation, useLocalSearchParams } from 'expo-router';
 import { proyectosData } from '@/data/proyectos';
 import MapView, { Marker } from 'react-native-maps';
 import { Calendar } from 'react-native-calendars';
 import { Image, ScrollView } from 'react-native';
 
 const DetallesProyecto = () => {
-  const router = useRouter(); // Usamos useRoute para obtener los parámetros pasados
+  const router = useRouter();
   const navigation = useNavigation();
 
-  const { id }: { id: string } = useLocalSearchParams(); // Obtenemos el ID del proyecto desde los parámetros de la ruta
+  const { id }: { id: string } = useLocalSearchParams();
 
-  const proyecto = proyectosData.find((p) => p.id === id); // Buscamos el proyecto en los datos
+  const proyecto = proyectosData.find((p) => p.id === id);
 
   if (!proyecto) {
     return <Text>No se encontraron detalles del proyecto.</Text>;
   }
 
   const handleEdit = () => {
-    // Navegamos a la pantalla de edición, pasando los datos del proyecto
     router.push(`/proyecto/editar?id=${proyecto.id}`);
   };
 
