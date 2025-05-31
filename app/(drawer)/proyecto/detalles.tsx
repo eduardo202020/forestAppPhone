@@ -1,72 +1,47 @@
 // app/proyecto/detalles.tsx
-import React from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import { useRouter, useNavigation, useLocalSearchParams } from 'expo-router'; // Importar useRoute y useNavigation
+import { useRouter, useNavigation, useLocalSearchParams } from 'expo-router';
 import { proyectosData } from '@/data/proyectos';
-import MapView, { Marker } from 'react-native-maps';
-import { Calendar } from 'react-native-calendars';
-import { Image, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
+import { getProyectoMarkdown } from '@/utils/markdown';
+import { WhatsappShareButton } from '@/components/WhatsappShareButton';
+import { ProyectoMap } from '@/components/ProyectoDetalle/ProyectoMap';
+import { ProyectoImagenes } from '@/components/ProyectoDetalle/ProyectoImagenes';
+import { ProyectoFecha } from '@/components/ProyectoDetalle/ProyectoFecha';
+
+type Proyecto = (typeof proyectosData)[0];
 
 const DetallesProyecto = () => {
-  const router = useRouter(); // Usamos useRoute para obtener los parámetros pasados
+  const router = useRouter();
   const navigation = useNavigation();
+  const { id }: { id: string } = useLocalSearchParams();
+  const proyecto = proyectosData.find((p) => p.id === id);
+  const viewRef = React.useRef(null);
 
-  const { id }: { id: string } = useLocalSearchParams(); // Obtenemos el ID del proyecto desde los parámetros de la ruta
-
-  const proyecto = proyectosData.find((p) => p.id === id); // Buscamos el proyecto en los datos
+  const handleEdit = () => {
+    if (!proyecto) return;
+    router.push(`/proyecto/editar?id=${proyecto.id}`);
+  };
 
   if (!proyecto) {
     return <Text>No se encontraron detalles del proyecto.</Text>;
   }
 
-  const handleEdit = () => {
-    // Navegamos a la pantalla de edición, pasando los datos del proyecto
-    router.push(`/proyecto/editar?id=${proyecto.id}`);
-  };
+  const markdown = getProyectoMarkdown(proyecto);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} ref={viewRef} collapsable={false}>
+      <WhatsappShareButton markdown={markdown} style={styles.fabShare} />
       <Text style={styles.title}>{proyecto.nombre}</Text>
       <Text style={styles.details}>{proyecto.descripcion}</Text>
       <Text style={styles.label}>Región: {proyecto.region}</Text>
       {/* Mapa con ubicación */}
-      {proyecto.location && (
-        <MapView
-          style={styles.map}
-          initialRegion={{
-            latitude: proyecto.location.latitude,
-            longitude: proyecto.location.longitude,
-            latitudeDelta: 0.01,
-            longitudeDelta: 0.01,
-          }}
-        >
-          <Marker coordinate={proyecto.location} />
-        </MapView>
-      )}
+      {proyecto.location && <ProyectoMap location={proyecto.location} />}
       {/* Imágenes */}
-      <Text style={styles.label}>Imágenes</Text>
-      <ScrollView horizontal style={styles.imagesRow}>
-        {proyecto.imagenes &&
-          proyecto.imagenes.map((img, idx) => (
-            <Image
-              key={idx}
-              source={{ uri: img }}
-              style={styles.imageBox}
-              resizeMode="cover"
-            />
-          ))}
-      </ScrollView>
+      <ProyectoImagenes imagenes={proyecto.imagenes || []} />
       {/* Fecha usando calendario */}
-      <Text style={styles.label}>Fecha de Cultivo</Text>
-      <Calendar
-        current={proyecto.fecha}
-        markedDates={{
-          [proyecto.fecha]: { selected: true, selectedColor: '#2ecc71' },
-        }}
-        disabledByDefault
-        hideExtraDays
-        style={{ marginBottom: 16 }}
-      />
+      <ProyectoFecha fecha={proyecto.fecha} />
       <Button title="Editar Proyecto" onPress={handleEdit} />
       <View style={{ height: 32 }} />
     </ScrollView>
@@ -87,28 +62,27 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 10,
   },
-  map: {
-    width: '100%',
-    height: 180,
-    borderRadius: 10,
-    marginBottom: 16,
-  },
-  imagesRow: {
-    flexDirection: 'row',
-    gap: 8,
-    marginBottom: 16,
-  },
-  imageBox: {
-    width: 100,
-    height: 100,
-    backgroundColor: '#e0e0e0',
-    borderRadius: 10,
-    marginRight: 8,
-  },
   label: {
     fontWeight: 'bold',
     marginBottom: 4,
     marginTop: 8,
+  },
+  fabShare: {
+    position: 'absolute',
+    top: -18,
+    right: -18,
+    backgroundColor: 'transparent',
+    borderRadius: 28,
+    width: 52,
+    height: 52,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 4,
+    zIndex: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
 });
 

@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProyectoImagenes renderiza correctamente sin imágenes 1`] = `
+<View>
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
+  >
+    Imágenes
+  </Text>
+  <RCTScrollView
+    horizontal={true}
+    style={
+      {
+        "flexDirection": "row",
+        "gap": 8,
+        "marginBottom": 16,
+      }
+    }
+  >
+    <View />
+  </RCTScrollView>
+</View>
+`;
+
+exports[`ProyectoImagenes renderiza correctamente una lista de imágenes 1`] = `
+<View>
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
+  >
+    Imágenes
+  </Text>
+  <RCTScrollView
+    horizontal={true}
+    style={
+      {
+        "flexDirection": "row",
+        "gap": 8,
+        "marginBottom": 16,
+      }
+    }
+  >
+    <View>
+      <Image
+        resizeMode="cover"
+        source={
+          {
+            "uri": "https://img.com/1.png",
+          }
+        }
+        style={
+          {
+            "backgroundColor": "#e0e0e0",
+            "borderRadius": 10,
+            "height": 100,
+            "marginRight": 8,
+            "width": 100,
+          }
+        }
+      />
+      <Image
+        resizeMode="cover"
+        source={
+          {
+            "uri": "https://img.com/2.png",
+          }
+        }
+        style={
+          {
+            "backgroundColor": "#e0e0e0",
+            "borderRadius": 10,
+            "height": 100,
+            "marginRight": 8,
+            "width": 100,
+          }
+        }
+      />
+    </View>
+  </RCTScrollView>
+</View>
+`;

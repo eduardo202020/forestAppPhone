@@ -2034,7 +2034,7 @@ exports[`FechaCultivo muestra el error si existe 1`] = `
             }
           >
             <View
-              accessibilityLabel="today Saturday 17 May 2025 "
+              accessibilityLabel=" Saturday 17 May 2025 "
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -2066,8 +2066,6 @@ exports[`FechaCultivo muestra el error si existe 1`] = `
               style={
                 {
                   "alignItems": "center",
-                  "backgroundColor": undefined,
-                  "borderRadius": 16,
                   "height": 32,
                   "opacity": 1,
                   "width": 32,
@@ -2086,9 +2084,6 @@ exports[`FechaCultivo muestra el error si existe 1`] = `
                       "fontSize": 16,
                       "fontWeight": "300",
                       "marginTop": 6,
-                    },
-                    {
-                      "color": "#00BBF2",
                     },
                   ]
                 }
@@ -3193,7 +3188,7 @@ exports[`FechaCultivo muestra el error si existe 1`] = `
             }
           >
             <View
-              accessibilityLabel=" Saturday 31 May 2025 "
+              accessibilityLabel="today Saturday 31 May 2025 "
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -3225,6 +3220,8 @@ exports[`FechaCultivo muestra el error si existe 1`] = `
               style={
                 {
                   "alignItems": "center",
+                  "backgroundColor": undefined,
+                  "borderRadius": 16,
                   "height": 32,
                   "opacity": 1,
                   "width": 32,
@@ -3243,6 +3240,9 @@ exports[`FechaCultivo muestra el error si existe 1`] = `
                       "fontSize": 16,
                       "fontWeight": "300",
                       "marginTop": 6,
+                    },
+                    {
+                      "color": "#00BBF2",
                     },
                   ]
                 }
@@ -5328,7 +5328,7 @@ exports[`FechaCultivo se renderiza sin errores 1`] = `
             }
           >
             <View
-              accessibilityLabel="today Saturday 17 May 2025 selected You have no entries for this day "
+              accessibilityLabel=" Saturday 17 May 2025 selected You have no entries for this day "
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -6487,7 +6487,7 @@ exports[`FechaCultivo se renderiza sin errores 1`] = `
             }
           >
             <View
-              accessibilityLabel=" Saturday 31 May 2025 "
+              accessibilityLabel="today Saturday 31 May 2025 "
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -6519,6 +6519,8 @@ exports[`FechaCultivo se renderiza sin errores 1`] = `
               style={
                 {
                   "alignItems": "center",
+                  "backgroundColor": undefined,
+                  "borderRadius": 16,
                   "height": 32,
                   "opacity": 1,
                   "width": 32,
@@ -6537,6 +6539,9 @@ exports[`FechaCultivo se renderiza sin errores 1`] = `
                       "fontSize": 16,
                       "fontWeight": "300",
                       "marginTop": 6,
+                    },
+                    {
+                      "color": "#00BBF2",
                     },
                   ]
                 }

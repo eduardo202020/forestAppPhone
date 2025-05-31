@@ -87,6 +87,7 @@ const CrearProyecto = () => {
       location: selectedLocation || undefined,
     };
     proyectosData.push(nuevoProyecto);
+    console.log('Proyecto creado:', nuevoProyecto);
     router.push(`/proyecto/detalles?id=${nuevoProyecto.id}`);
   };
 

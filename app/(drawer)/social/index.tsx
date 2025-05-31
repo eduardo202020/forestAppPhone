@@ -11,22 +11,28 @@ import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { proyectosData, Proyecto } from '@/data/proyectos';
+import { useFavoritos } from '@/hooks/useFavoritos';
 
 const index = () => {
   const router = useRouter();
   const [proyectos, setProyectos] = useState(proyectosData);
+  const { favoritos, esFavorito, toggleFavorito } = useFavoritos();
 
   const handleVerDetalles = (id: string) => {
-    router.push(`/proyecto/detalles?id=${id}`);
+    router.push('proyecto/detalles?id=' + id);
   };
 
   // Componente reutilizable para mostrar la lista de proyectos
   const ProyectoList = ({
     proyectos,
     onVerDetalles,
+    esFavorito,
+    toggleFavorito,
   }: {
     proyectos: Proyecto[];
     onVerDetalles: (id: string) => void;
+    esFavorito: (id: string) => boolean;
+    toggleFavorito: (id: string) => void;
   }) => {
     const renderImages = (imagenes: string[] | undefined) => {
       if (imagenes && imagenes.length > 0) {
@@ -62,7 +68,23 @@ const index = () => {
             style={styles.card}
             onPress={() => onVerDetalles(item.id)}
           >
-            <Text style={styles.projectName}>{item.nombre}</Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+              }}
+            >
+              <Text style={styles.projectName}>{item.nombre}</Text>
+              <MaterialCommunityIcons
+                name={esFavorito(item.id) ? 'heart' : 'heart-outline'}
+                size={24}
+                color={esFavorito(item.id) ? '#e74c3c' : '#888'}
+                onPress={() => toggleFavorito(item.id)}
+                style={{ marginLeft: 8 }}
+                testID={`fav-icon-${item.id}`}
+              />
+            </View>
             <Text style={styles.projectDesc}>{item.descripcion}</Text>
             <Text style={styles.projectRegion}>Región: {item.region}</Text>
             <Text style={styles.projectUbicacion}>
@@ -70,6 +92,15 @@ const index = () => {
             </Text>
             <Text style={styles.projectRegion}>Fecha: {item.fecha}</Text>
             {renderImages(item.imagenes)}
+            {/* Like icon y número de likes */}
+            <View style={styles.likesRow}>
+              <MaterialCommunityIcons
+                name="thumb-up-outline"
+                size={20}
+                color="#888"
+              />
+              <Text style={styles.likesText}>12</Text>
+            </View>
           </TouchableOpacity>
         )}
         keyExtractor={(item) => item.id.toString()}
@@ -79,7 +110,12 @@ const index = () => {
 
   return (
     <View style={styles.container}>
-      <ProyectoList proyectos={proyectos} onVerDetalles={handleVerDetalles} />
+      <ProyectoList
+        proyectos={proyectos}
+        onVerDetalles={handleVerDetalles}
+        esFavorito={esFavorito}
+        toggleFavorito={toggleFavorito}
+      />
     </View>
   );
 };
@@ -139,6 +175,18 @@ const styles = StyleSheet.create({
     marginRight: 4,
     backgroundColor: '#ccc',
     borderRadius: 4,
+  },
+  likesRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 8,
+    marginBottom: 0,
+  },
+  likesText: {
+    marginLeft: 4,
+    color: '#888',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
 });
 

@@ -22,7 +22,7 @@ export default function ProfileLayout() {
       <Stack.Screen
         name="detalles" // Otra pantalla del Stack
         options={{
-          headerShown: false,
+          headerShown: false, // Ocultar el header del Stack para que se muestre el header y menú lateral del Drawer
         }}
       />
       <Stack.Screen
