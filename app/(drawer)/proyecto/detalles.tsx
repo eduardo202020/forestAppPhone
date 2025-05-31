@@ -9,6 +9,8 @@ import { Image, ScrollView, Alert, TouchableOpacity } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import { IconButton } from 'react-native-paper';
 import * as Linking from 'expo-linking';
+import { getProyectoMarkdown } from '@/utils/markdown';
+import { WhatsappShareButton } from '@/components/WhatsappShareButton';
 
 type Proyecto = (typeof proyectosData)[0];
 
@@ -24,58 +26,16 @@ const DetallesProyecto = () => {
     router.push(`/proyecto/editar?id=${proyecto.id}`);
   };
 
-  // Genera el texto Markdown del proyecto
-  const getProyectoMarkdown = (proyecto: Proyecto) => {
-    // Mejor formato: tabla y secciones claras
-    let markdown = `# ${proyecto.nombre}\n\n`;
-    markdown += `| Campo         | Valor |\n|--------------|-------|\n`;
-    markdown += `| **Descripción** | ${proyecto.descripcion} |\n`;
-    markdown += `| **Región**      | ${proyecto.region} |\n`;
-    if (proyecto.location) {
-      markdown += `| **Ubicación**  | (${proyecto.location.latitude}, ${proyecto.location.longitude}) |\n`;
-    }
-    markdown += `| **Fecha de Cultivo** | ${proyecto.fecha} |\n`;
-    if (proyecto.imagenes && proyecto.imagenes.length > 0) {
-      markdown += `\n**Imágenes:**\\n`;
-      markdown += proyecto.imagenes.map((img) => `![](${img})`).join(' ');
-      markdown += '\n';
-    }
-    return markdown;
-  };
-
-  // Copia el texto Markdown al portapapeles y abre WhatsApp
-  const handleShare = async () => {
-    if (!proyecto) return;
-    const markdown = getProyectoMarkdown(proyecto);
-    await Clipboard.setStringAsync(markdown);
-    Alert.alert(
-      '¡Copiado!',
-      'El proyecto se copió al portapapeles en formato Markdown. Se abrirá WhatsApp.'
-    );
-    const message = encodeURIComponent('¡Mira mi proyecto!\n\n' + markdown);
-    const url = `whatsapp://send?text=${message}`;
-    setTimeout(() => {
-      Linking.openURL(url).catch(() => {
-        Alert.alert('Error', 'No se pudo abrir WhatsApp.');
-      });
-    }, 800);
-  };
-
   if (!proyecto) {
     return <Text>No se encontraron detalles del proyecto.</Text>;
   }
 
+  const markdown = getProyectoMarkdown(proyecto);
+
   return (
     <ScrollView style={styles.container} ref={viewRef} collapsable={false}>
-      {/* Botón compartir flotante */}
-      <IconButton
-        onPress={handleShare}
-        icon="whatsapp"
-        size={40}
-        iconColor="#25D366"
-        style={styles.fabShare}
-        accessibilityLabel="Compartir proyecto por WhatsApp"
-      />
+      {/* Botón compartir flotante modularizado */}
+      <WhatsappShareButton markdown={markdown} style={styles.fabShare} />
       <Text style={styles.title}>{proyecto.nombre}</Text>
       <Text style={styles.details}>{proyecto.descripcion}</Text>
       <Text style={styles.label}>Región: {proyecto.region}</Text>
