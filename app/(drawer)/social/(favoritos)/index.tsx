@@ -13,16 +13,17 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { proyectosData, Proyecto } from '@/data/proyectos';
 import { useFavoritos } from '@/hooks/useFavoritos';
 
-const index = () => {
+const Favoritos = () => {
   const router = useRouter();
-  const [proyectos, setProyectos] = useState(proyectosData);
+  const [proyectos] = useState(proyectosData);
   const { favoritos, esFavorito, toggleFavorito } = useFavoritos();
 
+  const favoritosProyectos = proyectos.filter((p) => favoritos.includes(p.id));
+
   const handleVerDetalles = (id: string) => {
-    router.push('proyecto/detalles?id=' + id);
+    router.push(('./detalles?id=' + id) as any);
   };
 
-  // Componente reutilizable para mostrar la lista de proyectos
   const ProyectoList = ({
     proyectos,
     onVerDetalles,
@@ -59,6 +60,16 @@ const index = () => {
       }
     };
 
+    if (proyectos.length === 0) {
+      return (
+        <View style={{ alignItems: 'center', marginTop: 48 }}>
+          <Text style={{ color: '#888', fontSize: 18 }}>
+            No tienes proyectos favoritos.
+          </Text>
+        </View>
+      );
+    }
+
     return (
       <FlatList
         showsVerticalScrollIndicator={false}
@@ -92,15 +103,6 @@ const index = () => {
             </Text>
             <Text style={styles.projectRegion}>Fecha: {item.fecha}</Text>
             {renderImages(item.imagenes)}
-            {/* Like icon y número de likes */}
-            <View style={styles.likesRow}>
-              <MaterialCommunityIcons
-                name="thumb-up-outline"
-                size={20}
-                color="#888"
-              />
-              <Text style={styles.likesText}>12</Text>
-            </View>
           </TouchableOpacity>
         )}
         keyExtractor={(item) => item.id.toString()}
@@ -111,7 +113,7 @@ const index = () => {
   return (
     <View style={styles.container}>
       <ProyectoList
-        proyectos={proyectos}
+        proyectos={favoritosProyectos}
         onVerDetalles={handleVerDetalles}
         esFavorito={esFavorito}
         toggleFavorito={toggleFavorito}
@@ -176,18 +178,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc',
     borderRadius: 4,
   },
-  likesRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 8,
-    marginBottom: 0,
-  },
-  likesText: {
-    marginLeft: 4,
-    color: '#888',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
 });
 
-export default index;
+export default Favoritos;

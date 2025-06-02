@@ -1,9 +1,8 @@
-// app/proyecto/detalles.tsx
-import React, { useEffect, useLayoutEffect } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-import { useRouter, useNavigation, useLocalSearchParams } from 'expo-router';
+// Detalles para el tab de social/destacados (idéntico a detalles de proyecto, pero stack propio)
+import React, { useEffect } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';
 import { proyectosData } from '@/data/proyectos';
-import { ScrollView } from 'react-native';
 import { getProyectoMarkdown } from '@/utils/markdown';
 import { WhatsappShareButton } from '@/components/WhatsappShareButton';
 import { ProyectoMap } from '@/components/ProyectoDetalle/ProyectoMap';
@@ -12,21 +11,10 @@ import { ProyectoFecha } from '@/components/ProyectoDetalle/ProyectoFecha';
 
 type Proyecto = (typeof proyectosData)[0];
 
-const DetallesProyecto = () => {
-  const router = useRouter();
-  const navigation = useNavigation();
+const DetallesDestacados = () => {
   const { id }: { id: string } = useLocalSearchParams();
   const proyecto = proyectosData.find((p) => p.id === id);
   const viewRef = React.useRef(null);
-
-  const handleEdit = () => {
-    if (!proyecto) return;
-    router.push(`./detalles?id=${proyecto.id}`);
-  };
-
-  useEffect(() => {
-    console.log('DetallesProyecto');
-  }, []);
 
   if (!proyecto) {
     return <Text>No se encontraron detalles del proyecto.</Text>;
@@ -40,13 +28,9 @@ const DetallesProyecto = () => {
       <Text style={styles.title}>{proyecto.nombre}</Text>
       <Text style={styles.details}>{proyecto.descripcion}</Text>
       <Text style={styles.label}>Región: {proyecto.region}</Text>
-      {/* Mapa con ubicación */}
       {proyecto.location && <ProyectoMap location={proyecto.location} />}
-      {/* Imágenes */}
       <ProyectoImagenes imagenes={proyecto.imagenes || []} />
-      {/* Fecha usando calendario */}
       <ProyectoFecha fecha={proyecto.fecha} />
-      <Button title="Editar Proyecto" onPress={handleEdit} />
       <View style={{ height: 32 }} />
     </ScrollView>
   );
@@ -90,4 +74,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetallesProyecto;
+export default DetallesDestacados;

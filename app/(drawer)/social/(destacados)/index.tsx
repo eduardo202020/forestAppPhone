@@ -1,83 +1,37 @@
+// Index para el stack de social/destacados
+import React, { useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
   TouchableOpacity,
-  Image,
 } from 'react-native';
-import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
 import { proyectosData, Proyecto } from '@/data/proyectos';
 import { useFavoritos } from '@/hooks/useFavoritos';
 
-const Favoritos = () => {
+const SocialDestacadosIndex = () => {
   const router = useRouter();
-  const [proyectos] = useState(proyectosData);
+  const [proyectos, setProyectos] = useState(proyectosData);
   const { favoritos, esFavorito, toggleFavorito } = useFavoritos();
 
-  const favoritosProyectos = proyectos.filter((p) => favoritos.includes(p.id));
-
   const handleVerDetalles = (id: string) => {
-    router.push('proyecto/detalles?id=' + id);
+    router.push(('./detalles?id=' + id) as any);
   };
 
-  const ProyectoList = ({
-    proyectos,
-    onVerDetalles,
-    esFavorito,
-    toggleFavorito,
-  }: {
-    proyectos: Proyecto[];
-    onVerDetalles: (id: string) => void;
-    esFavorito: (id: string) => boolean;
-    toggleFavorito: (id: string) => void;
-  }) => {
-    const renderImages = (imagenes: string[] | undefined) => {
-      if (imagenes && imagenes.length > 0) {
-        return (
-          <View style={styles.imagesRow}>
-            {imagenes.slice(0, 3).map((img, idx) => (
-              <Image
-                key={idx}
-                source={{ uri: img }}
-                style={styles.imageBox}
-                resizeMode="cover"
-              />
-            ))}
-          </View>
-        );
-      } else {
-        return (
-          <View style={styles.imagesRow}>
-            {[1, 2, 3].map((_, idx) => (
-              <View key={idx} style={styles.imageBox} />
-            ))}
-          </View>
-        );
-      }
-    };
-
-    if (proyectos.length === 0) {
-      return (
-        <View style={{ alignItems: 'center', marginTop: 48 }}>
-          <Text style={{ color: '#888', fontSize: 18 }}>
-            No tienes proyectos favoritos.
-          </Text>
-        </View>
-      );
-    }
-
-    return (
+  // Aquí puedes filtrar los proyectos destacados si tienes esa lógica
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Proyectos destacados</Text>
       <FlatList
         showsVerticalScrollIndicator={false}
         data={proyectos}
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.card}
-            onPress={() => onVerDetalles(item.id)}
+            onPress={() => handleVerDetalles(item.id)}
           >
             <View
               style={{
@@ -102,21 +56,9 @@ const Favoritos = () => {
               Ubicación: {item.ubicacion}
             </Text>
             <Text style={styles.projectRegion}>Fecha: {item.fecha}</Text>
-            {renderImages(item.imagenes)}
           </TouchableOpacity>
         )}
         keyExtractor={(item) => item.id.toString()}
-      />
-    );
-  };
-
-  return (
-    <View style={styles.container}>
-      <ProyectoList
-        proyectos={favoritosProyectos}
-        onVerDetalles={handleVerDetalles}
-        esFavorito={esFavorito}
-        toggleFavorito={toggleFavorito}
       />
     </View>
   );
@@ -132,18 +74,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
-  },
-  button: {
-    backgroundColor: '#2ecc71',
-    padding: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
   },
   card: {
     backgroundColor: '#f0f0f0',
@@ -167,17 +97,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#888',
   },
-  imagesRow: {
-    flexDirection: 'row',
-    marginTop: 8,
-  },
-  imageBox: {
-    flex: 1,
-    height: 100,
-    marginRight: 4,
-    backgroundColor: '#ccc',
-    borderRadius: 4,
-  },
 });
 
-export default Favoritos;
+export default SocialDestacadosIndex;

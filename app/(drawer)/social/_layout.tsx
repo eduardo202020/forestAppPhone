@@ -5,7 +5,7 @@ export default function TabLayout() {
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: 'blue', headerShown: false }}>
       <Tabs.Screen
-        name="index"
+        name="(index)"
         options={{
           title: 'Inicio',
           tabBarIcon: ({ color }) => (
@@ -14,7 +14,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="favoritos"
+        name="(favoritos)"
         options={{
           title: 'Favoritos',
           tabBarIcon: ({ color }) => (
@@ -23,7 +23,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="destacados"
+        name="(destacados)"
         options={{
           title: 'Destacados',
           tabBarIcon: ({ color }) => (
