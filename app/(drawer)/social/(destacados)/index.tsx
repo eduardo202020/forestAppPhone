@@ -1,64 +1,32 @@
-// Index para el stack de social/destacados
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import { proyectosData, Proyecto } from '@/data/proyectos';
 import { useFavoritos } from '@/hooks/useFavoritos';
+import ProyectoList from '@/components/ProyectoList/ProyectoList';
 
-const SocialDestacadosIndex = () => {
+const Favoritos = () => {
   const router = useRouter();
-  const [proyectos, setProyectos] = useState(proyectosData);
+  const [proyectos] = useState(proyectosData);
   const { favoritos, esFavorito, toggleFavorito } = useFavoritos();
+
+  const noFavoritosProyectos = proyectos.filter(
+    (p) => !favoritos.includes(p.id)
+  );
 
   const handleVerDetalles = (id: string) => {
     router.push(('./detalles?id=' + id) as any);
   };
 
-  // Aquí puedes filtrar los proyectos destacados si tienes esa lógica
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Proyectos destacados</Text>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={proyectos}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.card}
-            onPress={() => handleVerDetalles(item.id)}
-          >
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-              }}
-            >
-              <Text style={styles.projectName}>{item.nombre}</Text>
-              <MaterialCommunityIcons
-                name={esFavorito(item.id) ? 'heart' : 'heart-outline'}
-                size={24}
-                color={esFavorito(item.id) ? '#e74c3c' : '#888'}
-                onPress={() => toggleFavorito(item.id)}
-                style={{ marginLeft: 8 }}
-                testID={`fav-icon-${item.id}`}
-              />
-            </View>
-            <Text style={styles.projectDesc}>{item.descripcion}</Text>
-            <Text style={styles.projectRegion}>Región: {item.region}</Text>
-            <Text style={styles.projectUbicacion}>
-              Ubicación: {item.ubicacion}
-            </Text>
-            <Text style={styles.projectRegion}>Fecha: {item.fecha}</Text>
-          </TouchableOpacity>
-        )}
-        keyExtractor={(item) => item.id.toString()}
+      <ProyectoList
+        proyectos={noFavoritosProyectos}
+        onVerDetalles={handleVerDetalles}
+        esFavorito={esFavorito}
+        toggleFavorito={toggleFavorito}
       />
     </View>
   );
@@ -74,6 +42,18 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
+  },
+  button: {
+    backgroundColor: '#2ecc71',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
   card: {
     backgroundColor: '#f0f0f0',
@@ -97,6 +77,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#888',
   },
+  imagesRow: {
+    flexDirection: 'row',
+    marginTop: 8,
+  },
+  imageBox: {
+    flex: 1,
+    height: 100,
+    marginRight: 4,
+    backgroundColor: '#ccc',
+    borderRadius: 4,
+  },
 });
 
-export default SocialDestacadosIndex;
+export default Favoritos;

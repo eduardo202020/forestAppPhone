@@ -6,7 +6,7 @@ import { proyectosData } from '@/data/proyectos';
 import { getProyectoMarkdown } from '@/utils/markdown';
 import { WhatsappShareButton } from '@/components/WhatsappShareButton';
 import { ProyectoMap } from '@/components/ProyectoDetalle/ProyectoMap';
-import { ProyectoImagenes } from '@/components/ProyectoDetalle/ProyectoImagenes';
+import ProyectoImagenesList from '@/components/ProyectoDetalle/ProyectoImagenesList';
 import { ProyectoFecha } from '@/components/ProyectoDetalle/ProyectoFecha';
 
 type Proyecto = (typeof proyectosData)[0];
@@ -29,7 +29,7 @@ const DetallesDestacados = () => {
       <Text style={styles.details}>{proyecto.descripcion}</Text>
       <Text style={styles.label}>Región: {proyecto.region}</Text>
       {proyecto.location && <ProyectoMap location={proyecto.location} />}
-      <ProyectoImagenes imagenes={proyecto.imagenes || []} />
+      <ProyectoImagenesList imagenes={proyecto.imagenes || []} />
       <ProyectoFecha fecha={proyecto.fecha} />
       <View style={{ height: 32 }} />
     </ScrollView>

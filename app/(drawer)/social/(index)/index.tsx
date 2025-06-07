@@ -1,17 +1,11 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { proyectosData, Proyecto } from '@/data/proyectos';
 import { useFavoritos } from '@/hooks/useFavoritos';
+import ProyectoList from '@/components/ProyectoList/ProyectoList';
 
 const Favoritos = () => {
   const router = useRouter();
@@ -20,92 +14,6 @@ const Favoritos = () => {
 
   const handleVerDetalles = (id: string) => {
     router.push(('./detalles?id=' + id) as any);
-  };
-
-  const ProyectoList = ({
-    proyectos,
-    onVerDetalles,
-    esFavorito,
-    toggleFavorito,
-  }: {
-    proyectos: Proyecto[];
-    onVerDetalles: (id: string) => void;
-    esFavorito: (id: string) => boolean;
-    toggleFavorito: (id: string) => void;
-  }) => {
-    const renderImages = (imagenes: string[] | undefined) => {
-      if (imagenes && imagenes.length > 0) {
-        return (
-          <View style={styles.imagesRow}>
-            {imagenes.slice(0, 3).map((img, idx) => (
-              <Image
-                key={idx}
-                source={{ uri: img }}
-                style={styles.imageBox}
-                resizeMode="cover"
-              />
-            ))}
-          </View>
-        );
-      } else {
-        return (
-          <View style={styles.imagesRow}>
-            {[1, 2, 3].map((_, idx) => (
-              <View key={idx} style={styles.imageBox} />
-            ))}
-          </View>
-        );
-      }
-    };
-
-    if (proyectos.length === 0) {
-      return (
-        <View style={{ alignItems: 'center', marginTop: 48 }}>
-          <Text style={{ color: '#888', fontSize: 18 }}>
-            No tienes proyectos favoritos.
-          </Text>
-        </View>
-      );
-    }
-
-    return (
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={proyectos}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.card}
-            onPress={() => onVerDetalles(item.id)}
-          >
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-              }}
-            >
-              <Text style={styles.projectName}>{item.nombre}</Text>
-              <MaterialCommunityIcons
-                name={esFavorito(item.id) ? 'heart' : 'heart-outline'}
-                size={24}
-                color={esFavorito(item.id) ? '#e74c3c' : '#888'}
-                onPress={() => toggleFavorito(item.id)}
-                style={{ marginLeft: 8 }}
-                testID={`fav-icon-${item.id}`}
-              />
-            </View>
-            <Text style={styles.projectDesc}>{item.descripcion}</Text>
-            <Text style={styles.projectRegion}>Región: {item.region}</Text>
-            <Text style={styles.projectUbicacion}>
-              Ubicación: {item.ubicacion}
-            </Text>
-            <Text style={styles.projectRegion}>Fecha: {item.fecha}</Text>
-            {renderImages(item.imagenes)}
-          </TouchableOpacity>
-        )}
-        keyExtractor={(item) => item.id.toString()}
-      />
-    );
   };
 
   return (
