@@ -11,8 +11,8 @@ import { useAuth } from '@/providers/AuthProvider';
 
 function CustomDrawerContent(props: any) {
   const { top, bottom } = useSafeAreaInsets();
-  // const { session } = useAuth();
-  // const user = session?.user;
+  const { session } = useAuth();
+  const user = session?.user;
 
   return (
     <View style={{ flex: 1, backgroundColor: '#dde3fe' }}>
@@ -129,7 +129,7 @@ function CustomDrawerContent(props: any) {
                 />
               )}
               onPress={() =>
-                props.navigation.navigate('ajustes', { screen: 'login' })
+                props.navigation.navigate('ajustes', { screen: 'index' })
               }
               style={{
                 borderRadius: 0,

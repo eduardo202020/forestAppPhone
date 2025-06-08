@@ -1,3 +1,4 @@
+import AuthProvider from '@/providers/AuthProvider';
 import { useFonts } from 'expo-font';
 import { Stack, Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -23,9 +24,11 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
-      <Stack.Screen name="+not-found" options={{ headerShown: false }} />
-    </Stack>
+    <AuthProvider>
+      <Stack>
+        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+        <Stack.Screen name="+not-found" options={{ headerShown: false }} />
+      </Stack>
+    </AuthProvider>
   );
 }
