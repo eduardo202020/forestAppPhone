@@ -6,7 +6,9 @@ import * as Linking from 'expo-linking';
 
 jest.mock('expo-clipboard');
 jest.mock('expo-linking');
-jest.spyOn(require('react-native').Alert, 'alert').mockImplementation(jest.fn());
+jest
+  .spyOn(require('react-native').Alert, 'alert')
+  .mockImplementation(jest.fn());
 
 const mockMarkdown =
   '# Proyecto Demo\n\n| Campo | Valor |\n|---|---|\n| **Descripción** | Demo |';

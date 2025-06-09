@@ -6,7 +6,12 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 jest.mock('@/utils/supabase', () => ({
   supabase: {
     auth: { onAuthStateChange: jest.fn(), signOut: jest.fn() },
-    from: jest.fn(() => ({ select: jest.fn(), update: jest.fn(), delete: jest.fn(), insert: jest.fn() })),
+    from: jest.fn(() => ({
+      select: jest.fn(),
+      update: jest.fn(),
+      delete: jest.fn(),
+      insert: jest.fn(),
+    })),
   },
 }));
 
