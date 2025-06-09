@@ -1,0 +1,18 @@
+Registro TDD - Componente DescripcionInput
+Fecha: 2025-05-17
+
+1. Se escribieron las pruebas unitarias antes de modificar el componente.
+2. Se ejecutaron los tests con el comando:
+   npx jest components/__tests__/ProyectoForm/DescripcionInput-test.tsx --ci
+3. Resultado:
+   - Test Suites: 1 passed, 1 total
+   - Tests: 3 passed, 3 total
+   - Snapshots: 2 passed, 2 total
+   - Todos los tests pasaron correctamente.
+
+Las pruebas cubren:
+- Renderizado sin errores
+- Visualización de error
+- Llamada al callback onChange
+
+Este archivo documenta el proceso TDD para DescripcionInput.

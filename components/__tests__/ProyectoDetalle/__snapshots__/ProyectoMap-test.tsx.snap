@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProyectoMap se renderiza correctamente con coordenadas 1`] = `
+<AIRMap
+  initialRegion={
+    {
+      "latitude": 1.23,
+      "latitudeDelta": 0.01,
+      "longitude": 4.56,
+      "longitudeDelta": 0.01,
+    }
+  }
+  onChange={[Function]}
+  onMapReady={[Function]}
+  region={null}
+  style={
+    {
+      "borderRadius": 10,
+      "height": 180,
+      "marginBottom": 16,
+      "width": "100%",
+    }
+  }
+>
+  <AIRMapMarker
+    coordinate={
+      {
+        "latitude": 1.23,
+        "longitude": 4.56,
+      }
+    }
+    onPress={[Function]}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "position": "absolute",
+        },
+        undefined,
+      ]
+    }
+  />
+</AIRMap>
+`;

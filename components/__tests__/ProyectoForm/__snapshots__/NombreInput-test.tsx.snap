@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NombreInput muestra el error si existe 1`] = `
+[
+  <TextInput
+    editable={true}
+    onChangeText={[Function]}
+    placeholder="Nombre del proyecto"
+    style={
+      {
+        "borderColor": "#ccc",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "marginBottom": 10,
+        "padding": 10,
+      }
+    }
+    value=""
+  />,
+  <Text
+    style={
+      {
+        "color": "red",
+        "fontSize": 12,
+      }
+    }
+  >
+    Campo requerido
+  </Text>,
+]
+`;
+
+exports[`NombreInput se renderiza sin errores 1`] = `
+<TextInput
+  editable={true}
+  onChangeText={[Function]}
+  placeholder="Nombre del proyecto"
+  style={
+    {
+      "borderColor": "#ccc",
+      "borderRadius": 5,
+      "borderWidth": 1,
+      "marginBottom": 10,
+      "padding": 10,
+    }
+  }
+  value="Proyecto A"
+/>
+`;

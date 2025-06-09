@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import React from 'react';
 
 const TestComponent = () => {
@@ -13,5 +13,3 @@ const TestComponent = () => {
 };
 
 export default TestComponent;
-
-const styles = StyleSheet.create({});

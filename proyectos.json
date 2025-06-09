@@ -1,0 +1,107 @@
+[
+    {
+        "id": "1",
+        "nombre": "Reforestación Amazonas",
+        "ubicacion": "Zona A, Amazonas",
+        "fecha": "2023-05-01",
+        "region": "Amazonas",
+        "descripcion": "Proyecto de reforestación para restaurar la biodiversidad en la región amazónica.",
+        "plantas": [
+            {
+                "nombre": "Cecropia",
+                "tipo": "Árbol",
+                "cantidad": 100
+            },
+            {
+                "nombre": "Guaraná",
+                "tipo": "Arbusto",
+                "cantidad": 50
+            }
+        ],
+        "estado": "En progreso"
+    },
+    {
+        "id": "2",
+        "nombre": "Reforestación Loreto",
+        "ubicacion": "Zona B, Loreto",
+        "fecha": "2023-06-15",
+        "region": "Loreto",
+        "descripcion": "Reforestación en la zona norte de Loreto, con enfoque en la recuperación del ecosistema local.",
+        "plantas": [
+            {
+                "nombre": "Kapok",
+                "tipo": "Árbol",
+                "cantidad": 200
+            },
+            {
+                "nombre": "Achiote",
+                "tipo": "Arbusto",
+                "cantidad": 75
+            }
+        ],
+        "estado": "Pendiente"
+    },
+    {
+        "id": "3",
+        "nombre": "Proyecto Puno",
+        "ubicacion": "Zona C, Puno",
+        "fecha": "2023-07-20",
+        "region": "Puno",
+        "descripcion": "Reforestación en las laderas de Puno, con especies adaptadas a climas fríos.",
+        "plantas": [
+            {
+                "nombre": "Queñua",
+                "tipo": "Árbol",
+                "cantidad": 150
+            },
+            {
+                "nombre": "Matico",
+                "tipo": "Planta medicinal",
+                "cantidad": 60
+            }
+        ],
+        "estado": "Completado"
+    },
+    {
+        "id": "4",
+        "nombre": "Restauración Madre de Dios",
+        "ubicacion": "Zona D, Madre de Dios",
+        "fecha": "2023-08-05",
+        "region": "Madre de Dios",
+        "descripcion": "Proyecto para restaurar las zonas de bosque degradadas en la región de Madre de Dios.",
+        "plantas": [
+            {
+                "nombre": "Cacao",
+                "tipo": "Árbol",
+                "cantidad": 250
+            },
+            {
+                "nombre": "Heliconia",
+                "tipo": "Planta ornamental",
+                "cantidad": 80
+            }
+        ],
+        "estado": "En progreso"
+    },
+    {
+        "id": "5",
+        "nombre": "Reforestación San Martín",
+        "ubicacion": "Zona E, San Martín",
+        "fecha": "2023-09-10",
+        "region": "San Martín",
+        "descripcion": "Recuperación de áreas afectadas por la deforestación en la región de San Martín.",
+        "plantas": [
+            {
+                "nombre": "Shihuahuaco",
+                "tipo": "Árbol",
+                "cantidad": 180
+            },
+            {
+                "nombre": "Palo de rosa",
+                "tipo": "Árbol",
+                "cantidad": 100
+            }
+        ],
+        "estado": "Pendiente"
+    }
+]

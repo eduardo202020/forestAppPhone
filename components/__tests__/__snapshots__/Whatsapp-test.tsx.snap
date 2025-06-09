@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TestComponent se renderiza sin errores 1`] = `
+<Text>
+  Test component funcionando
+</Text>
+`;
+
+exports[`WhatsAppButton renderiza correctamente el botón y el texto 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <div>
+    icon
+  </div>
+  <View>
+    <Text
+      style={
+        {
+          "color": "#25D366",
+          "fontSize": 30,
+        }
+      }
+    >
+      Contactar por WhatsApp
+    </Text>
+  </View>
+</View>
+`;
