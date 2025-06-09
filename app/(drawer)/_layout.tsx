@@ -3,14 +3,14 @@ import 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'; // Asegúrate de importar los iconos que necesitas
+import { MaterialCommunityIcons } from '@expo/vector-icons'; // Asegúrate de importar los iconos que necesitas
 
 import CustomDrawerContent from '@/components/CustomDrawer';
 import { StatusBar } from 'expo-status-bar';
 
 export default function Layout() {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={styles.root}>
       <StatusBar style="auto" />
       <Drawer
         screenOptions={{
@@ -108,3 +108,7 @@ export default function Layout() {
     </GestureHandlerRootView>
   );
 }
+
+const styles = {
+  root: { flex: 1 },
+};

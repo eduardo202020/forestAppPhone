@@ -1,15 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Proyecto } from '@/data/proyectos';
+import { ProyectoCardProps } from '@/types/ProyectoCard';
 import ProyectoImagenesList from '@/components/ProyectoDetalle/ProyectoImagenesList';
-
-interface ProyectoCardProps {
-  proyecto: Proyecto;
-  onVerDetalles: (id: string) => void;
-  esFavorito: (id: string) => boolean;
-  toggleFavorito: (id: string) => void;
-}
 
 export const ProyectoCard: React.FC<ProyectoCardProps> = ({
   proyecto,
@@ -18,24 +11,15 @@ export const ProyectoCard: React.FC<ProyectoCardProps> = ({
   toggleFavorito,
 }) => {
   return (
-    <TouchableOpacity
-      style={styles.card}
-      onPress={() => onVerDetalles(proyecto.id)}
-    >
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'flex-start',
-        }}
-      >
+    <TouchableOpacity style={styles.card} onPress={onVerDetalles}>
+      <View style={styles.row}>
         <Text style={styles.projectName}>{proyecto.nombre}</Text>
         <MaterialCommunityIcons
-          name={esFavorito(proyecto.id) ? 'heart' : 'heart-outline'}
+          name={esFavorito() ? 'heart' : 'heart-outline'}
           size={24}
-          color={esFavorito(proyecto.id) ? '#e74c3c' : '#888'}
-          onPress={() => toggleFavorito(proyecto.id)}
-          style={{ marginLeft: 8 }}
+          color={esFavorito() ? '#e74c3c' : '#888'}
+          onPress={toggleFavorito}
+          style={styles.favIcon}
           testID={`fav-icon-${proyecto.id}`}
         />
       </View>
@@ -56,6 +40,14 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 8,
     marginBottom: 12,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+  },
+  favIcon: {
+    marginLeft: 8,
   },
   projectName: {
     fontSize: 18,

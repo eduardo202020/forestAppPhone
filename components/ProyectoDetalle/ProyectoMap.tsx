@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 interface ProyectoMapProps {

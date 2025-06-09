@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Button, Alert, Text } from 'react-native';
+import { View, Alert, Text, StyleSheet } from 'react-native';
 import * as Linking from 'expo-linking';
-import { FontAwesome } from '@expo/vector-icons';
 import { IconButton } from 'react-native-paper';
 
 const openWhatsApp = () => {
@@ -10,14 +9,14 @@ const openWhatsApp = () => {
 
   const url = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
 
-  Linking.openURL(url).catch((err) => {
+  Linking.openURL(url).catch(() => {
     Alert.alert('Error', 'No se pudo abrir WhatsApp.');
   });
 };
 
 export function WhatsAppButton() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={styles.container}>
       <IconButton
         onPress={openWhatsApp}
         icon="whatsapp"
@@ -25,10 +24,20 @@ export function WhatsAppButton() {
         iconColor="#25D366"
       />
       <View>
-        <Text style={{ fontSize: 30, color: '#25D366' }}>
-          Contactar por WhatsApp
-        </Text>
+        <Text style={styles.text}>Contactar por WhatsApp</Text>
       </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 30,
+    color: '#25D366',
+  },
+});

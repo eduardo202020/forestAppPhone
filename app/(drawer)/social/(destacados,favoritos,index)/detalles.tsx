@@ -1,5 +1,5 @@
 // Detalles para el tab de social/destacados (idéntico a detalles de proyecto, pero stack propio)
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { proyectosData } from '@/data/proyectos';
@@ -8,8 +8,6 @@ import { WhatsappShareButton } from '@/components/WhatsappShareButton';
 import { ProyectoMap } from '@/components/ProyectoDetalle/ProyectoMap';
 import ProyectoImagenesList from '@/components/ProyectoDetalle/ProyectoImagenesList';
 import { ProyectoFecha } from '@/components/ProyectoDetalle/ProyectoFecha';
-
-type Proyecto = (typeof proyectosData)[0];
 
 const DetallesDestacados = () => {
   const { id }: { id: string } = useLocalSearchParams();
@@ -31,7 +29,7 @@ const DetallesDestacados = () => {
       {proyecto.location && <ProyectoMap location={proyecto.location} />}
       <ProyectoImagenesList imagenes={proyecto.imagenes || []} />
       <ProyectoFecha fecha={proyecto.fecha} />
-      <View style={{ height: 32 }} />
+      <View style={styles.spacer} />
     </ScrollView>
   );
 };
@@ -71,6 +69,9 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
+  },
+  spacer: {
+    height: 32,
   },
 });
 

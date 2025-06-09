@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Alert, StyleSheet, View, AppState } from 'react-native';
 import { supabase } from '@/utils/supabase';
 import { Button, Input } from '@rneui/themed';
@@ -7,7 +7,7 @@ import { Button, Input } from '@rneui/themed';
 // the app is in the foreground. When this is added, you will continue to receive
 // `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
 // if the user's session is terminated. This should only be registered once.
-export default function Auth() {
+function Auth() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -110,3 +110,5 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
+
+export default Auth;

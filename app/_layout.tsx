@@ -1,16 +1,17 @@
 import AuthProvider from '@/providers/AuthProvider';
 import { useFonts } from 'expo-font';
-import { Stack, Slot } from 'expo-router';
+import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
+import SpaceMono from '../assets/fonts/SpaceMono-Regular.ttf';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono,
   });
 
   useEffect(() => {

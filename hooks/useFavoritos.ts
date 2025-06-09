@@ -37,7 +37,6 @@ export function useFavoritos() {
         ? prev.filter((fid) => fid !== id)
         : [...prev, id];
       favoritosEmitter.emit('cambioFavoritos', nuevos);
-      console.log('Favoritos actuales:', nuevos);
       return nuevos;
     });
   }, []);

@@ -1,8 +1,8 @@
 // app/proyecto/editar.tsx
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
+import { Text, Button, StyleSheet, ScrollView } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
-import { proyectosData, Proyecto } from '@/data/proyectos';
+import { proyectosData } from '@/data/proyectos';
 import ProyectoForm from '@/components/ProyectoForm';
 
 const EditarProyecto = () => {
@@ -15,7 +15,7 @@ const EditarProyecto = () => {
   const [descripcion, setDescripcion] = useState(proyecto?.descripcion || '');
   const [selectedDate, setSelectedDate] = useState(proyecto?.fecha || '');
   const [modalVisible, setModalVisible] = useState(false);
-  const [imagenes, setImagenes] = useState<string[]>(
+  const [imagenes] = useState<string[]>(
     proyecto?.imagenes || [
       'https://placehold.co/200x200?text=Imagen+1',
       'https://placehold.co/200x200?text=Imagen+2',
@@ -28,7 +28,6 @@ const EditarProyecto = () => {
     latitude: number;
     longitude: number;
   } | null>(proyecto?.location || null);
-  const [ubicacion, setUbicacion] = useState(proyecto?.ubicacion || '');
   const [errores, setErrores] = useState({});
 
   useEffect(() => {
@@ -40,7 +39,6 @@ const EditarProyecto = () => {
   const handleMapPress = (e: any) => {
     const coord = e.nativeEvent.coordinate;
     setSelectedLocation(coord);
-    setUbicacion(`${coord.latitude}, ${coord.longitude}`);
   };
 
   const handleGuardar = () => {
@@ -63,9 +61,6 @@ const EditarProyecto = () => {
     proyecto.fecha = selectedDate;
     proyecto.imagenes = imagenes;
     proyecto.location = selectedLocation || undefined;
-    proyecto.ubicacion = selectedLocation
-      ? `${selectedLocation.latitude}, ${selectedLocation.longitude}`
-      : ubicacion;
     router.push(`/proyecto/detalles?id=${proyecto.id}`);
   };
 
@@ -86,9 +81,6 @@ const EditarProyecto = () => {
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
         selectedLocation={selectedLocation}
-        setSelectedLocation={setSelectedLocation}
-        ubicacion={ubicacion}
-        setUbicacion={setUbicacion}
         imagenes={imagenes}
         setModalVisible={setModalVisible}
         modalVisible={modalVisible}
@@ -100,7 +92,6 @@ const EditarProyecto = () => {
         errores={errores}
       />
       <Button title="Guardar Cambios" onPress={handleGuardar} color="#2ecc71" />
-      <View style={{ height: 32 }} />
     </ScrollView>
   );
 };

@@ -1,20 +1,16 @@
 // app/proyecto/detalles.tsx
-import React, { useEffect, useLayoutEffect } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-import { useRouter, useNavigation, useLocalSearchParams } from 'expo-router';
+import React, { useEffect } from 'react';
+import { Text, Button, StyleSheet, ScrollView } from 'react-native';
+import { useRouter, useLocalSearchParams } from 'expo-router';
 import { proyectosData } from '@/data/proyectos';
-import { ScrollView } from 'react-native';
 import { getProyectoMarkdown } from '@/utils/markdown';
 import { WhatsappShareButton } from '@/components/WhatsappShareButton';
 import { ProyectoMap } from '@/components/ProyectoDetalle/ProyectoMap';
 import { ProyectoImagenes } from '@/components/ProyectoDetalle/ProyectoImagenes';
 import { ProyectoFecha } from '@/components/ProyectoDetalle/ProyectoFecha';
 
-type Proyecto = (typeof proyectosData)[0];
-
 const DetallesProyecto = () => {
   const router = useRouter();
-  const navigation = useNavigation();
   const { id }: { id: string } = useLocalSearchParams();
   const proyecto = proyectosData.find((p) => p.id === id);
   const viewRef = React.useRef(null);
@@ -25,7 +21,7 @@ const DetallesProyecto = () => {
   };
 
   useEffect(() => {
-    console.log('DetallesProyecto');
+    // Eliminar console.log
   }, []);
 
   if (!proyecto) {
@@ -47,7 +43,6 @@ const DetallesProyecto = () => {
       {/* Fecha usando calendario */}
       <ProyectoFecha fecha={proyecto.fecha} />
       <Button title="Editar Proyecto" onPress={handleEdit} />
-      <View style={{ height: 32 }} />
     </ScrollView>
   );
 };

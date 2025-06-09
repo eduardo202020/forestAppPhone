@@ -1,14 +1,7 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, Text, StyleSheet } from 'react-native';
 import { ProyectoCard } from './ProyectoCard';
-import { Proyecto } from '@/data/proyectos';
-
-interface ProyectoListProps {
-  proyectos: Proyecto[];
-  onVerDetalles: (id: string) => void;
-  esFavorito: (id: string) => boolean;
-  toggleFavorito: (id: string) => void;
-}
+import { ProyectoListProps } from '@/types/ProyectoList';
 
 const ProyectoList: React.FC<ProyectoListProps> = ({
   proyectos,
@@ -18,10 +11,8 @@ const ProyectoList: React.FC<ProyectoListProps> = ({
 }) => {
   if (proyectos.length === 0) {
     return (
-      <View style={{ alignItems: 'center', marginTop: 48 }}>
-        <Text style={{ color: '#888', fontSize: 18 }}>
-          No hay proyectos para mostrar.
-        </Text>
+      <View style={styles.emptyContainer}>
+        <Text style={styles.emptyText}>No hay proyectos para mostrar.</Text>
       </View>
     );
   }
@@ -32,14 +23,25 @@ const ProyectoList: React.FC<ProyectoListProps> = ({
       renderItem={({ item }) => (
         <ProyectoCard
           proyecto={item}
-          onVerDetalles={onVerDetalles}
-          esFavorito={esFavorito}
-          toggleFavorito={toggleFavorito}
+          onVerDetalles={() => onVerDetalles(item.id)}
+          esFavorito={() => esFavorito(item.id)}
+          toggleFavorito={() => toggleFavorito(item.id)}
         />
       )}
       keyExtractor={(item) => item.id.toString()}
     />
   );
 };
+
+const styles = StyleSheet.create({
+  emptyContainer: {
+    alignItems: 'center',
+    marginTop: 48,
+  },
+  emptyText: {
+    color: '#888',
+    fontSize: 18,
+  },
+});
 
 export default ProyectoList;

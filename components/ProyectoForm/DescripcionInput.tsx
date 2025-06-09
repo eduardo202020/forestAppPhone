@@ -1,12 +1,6 @@
 import React from 'react';
 import { TextInput, Text, StyleSheet } from 'react-native';
-
-interface DescripcionInputProps {
-  value: string;
-  onChange: (v: string) => void;
-  editable?: boolean;
-  error?: string;
-}
+import { DescripcionInputProps } from '../../types/DescripcionInput';
 
 const DescripcionInput: React.FC<DescripcionInputProps> = ({
   value,
@@ -16,14 +10,15 @@ const DescripcionInput: React.FC<DescripcionInputProps> = ({
 }) => (
   <>
     <TextInput
-      style={[styles.input, { minHeight: 60 }]}
+      style={[styles.input, styles.textArea]}
       placeholder="Descripción"
       value={value}
       onChangeText={onChange}
-      multiline
       editable={editable}
+      multiline
+      numberOfLines={4}
     />
-    {error && <Text style={styles.errorText}>{error}</Text>}
+    {error && <Text style={styles.error}>{error}</Text>}
   </>
 );
 
@@ -31,16 +26,17 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 8,
+    borderRadius: 5,
     padding: 10,
-    marginBottom: 12,
-    fontSize: 16,
-    backgroundColor: '#f9f9f9',
+    marginBottom: 10,
   },
-  errorText: {
+  textArea: {
+    height: 80,
+    textAlignVertical: 'top',
+  },
+  error: {
     color: 'red',
-    marginBottom: 8,
-    fontSize: 13,
+    fontSize: 12,
   },
 });
 

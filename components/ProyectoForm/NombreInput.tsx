@@ -1,12 +1,6 @@
 import React from 'react';
 import { TextInput, Text, StyleSheet } from 'react-native';
-
-interface NombreInputProps {
-  value: string;
-  onChange: (v: string) => void;
-  editable?: boolean;
-  error?: string;
-}
+import { NombreInputProps } from '../../types/NombreInput';
 
 const NombreInput: React.FC<NombreInputProps> = ({
   value,
@@ -22,7 +16,7 @@ const NombreInput: React.FC<NombreInputProps> = ({
       onChangeText={onChange}
       editable={editable}
     />
-    {error && <Text style={styles.errorText}>{error}</Text>}
+    {error && <Text style={styles.error}>{error}</Text>}
   </>
 );
 
@@ -30,16 +24,13 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 8,
+    borderRadius: 5,
     padding: 10,
-    marginBottom: 12,
-    fontSize: 16,
-    backgroundColor: '#f9f9f9',
+    marginBottom: 10,
   },
-  errorText: {
+  error: {
     color: 'red',
-    marginBottom: 8,
-    fontSize: 13,
+    fontSize: 12,
   },
 });
 

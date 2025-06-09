@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-
 import { useRouter } from 'expo-router';
 
 const ProyectoIndex = () => {
@@ -16,8 +15,7 @@ const ProyectoIndex = () => {
       <TouchableOpacity style={styles.button} onPress={handleCrearProyecto}>
         <Text style={styles.buttonText}>Crear Proyecto</Text>
       </TouchableOpacity>
-      {/* Aquí podrías mostrar un resumen, estadísticas o mensaje personalizado, pero NO el listado completo */}
-      <Text style={{ color: '#888', marginTop: 24, textAlign: 'center' }}>
+      <Text style={styles.infoText}>
         Aquí verás un resumen de tu proyecto principal o tus estadísticas.
       </Text>
     </View>
@@ -46,6 +44,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  infoText: {
+    color: '#888',
+    marginTop: 24,
+    textAlign: 'center',
   },
 });
 

@@ -1,6 +1,5 @@
-import { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import { Session } from '@supabase/supabase-js';
-import { router } from 'expo-router';
 
 import { supabase } from '@/utils/supabase';
 

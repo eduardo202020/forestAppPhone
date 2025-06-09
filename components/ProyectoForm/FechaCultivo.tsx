@@ -1,12 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { Calendar } from 'react-native-calendars';
-
-interface FechaCultivoProps {
-  selectedDate: string;
-  setSelectedDate: (v: string) => void;
-  error?: string;
-}
+import { FechaCultivoProps } from '../../types/FechaCultivo';
 
 const FechaCultivo: React.FC<FechaCultivoProps> = ({
   selectedDate,
@@ -19,36 +14,22 @@ const FechaCultivo: React.FC<FechaCultivoProps> = ({
       onDayPress={(day: { dateString: string }) =>
         setSelectedDate(day.dateString)
       }
-      markedDates={
-        selectedDate
-          ? { [selectedDate]: { selected: true, selectedColor: '#2ecc71' } }
-          : {}
-      }
-      current={selectedDate}
-      style={{ marginBottom: 16 }}
+      markedDates={{
+        [selectedDate]: { selected: true, selectedColor: '#4CAF50' },
+      }}
     />
-    <Text style={styles.ubicacionText}>
-      {selectedDate ? `Seleccionada: ${selectedDate}` : 'Selecciona una fecha'}
-    </Text>
-    {error && <Text style={styles.errorText}>{error}</Text>}
+    {error && <Text style={styles.error}>{error}</Text>}
   </>
 );
 
 const styles = StyleSheet.create({
   label: {
     fontWeight: 'bold',
-    marginBottom: 4,
-    marginTop: 8,
+    marginBottom: 5,
   },
-  ubicacionText: {
-    fontSize: 12,
-    color: '#888',
-    marginBottom: 10,
-  },
-  errorText: {
+  error: {
     color: 'red',
-    marginBottom: 8,
-    fontSize: 13,
+    fontSize: 12,
   },
 });
 

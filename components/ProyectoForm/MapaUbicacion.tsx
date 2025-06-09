@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 interface MapaUbicacionProps {
   selectedLocation: { latitude: number; longitude: number } | null;
   mapRef?: React.RefObject<MapView>;
-  onMapPress?: (e: any) => void;
+  onMapPress?: () => void;
   editable?: boolean;
   error?: string;
 }
