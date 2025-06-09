@@ -17,7 +17,7 @@ Después de hacer el fork, necesitas **clonar** el repositorio en tu máquina lo
 2. Clona tu repositorio (cambia `<tu_usuario>` por tu nombre de usuario en GitHub):
 
    ```bash
-   git clone https://github.com/<tu_usuario>/uni_proyecto.git
+   git clone https://github.com/<tu_usuario>/forestAppPhone.git
    ```
 
 3. Ingresa al directorio del proyecto:
@@ -36,10 +36,18 @@ Es importante que cada uno trabaje en una **rama separada** para evitar conflict
    git checkout main  # o git checkout master si esa es la rama principal
    ```
 
-2. Obtén los últimos cambios del repositorio principal (esto asegura que tu repositorio esté actualizado):
+2. Obtén los últimos cambios del repositorio principal (esto asegura que tu repositorio esté actualizado) y de la rama desarrollo:
 
    ```bash
    git pull origin main  # o git pull origin master
+   ```
+
+   ```bash
+   git checkout desarrollo
+   ```
+
+   ```bash
+   git pull origin desarrollo
    ```
 
 3. Ahora, crea una **rama nueva** para tu trabajo. Nombrala como desees (por ejemplo, `rama_jhunior`):
@@ -111,9 +119,3 @@ Una vez que hayas creado el Pull Request, yo o alguien más revisará los cambio
 Este archivo de instrucciones ayudará a tus compañeros a entender el flujo de trabajo con Git y GitHub y a hacer sus contribuciones sin problemas. Si necesitas alguna modificación o más detalles, avísame.
 
 v3 from jhunior
-
-v4 from desarrollo
-
-v5 from piero.
-
-v6 from jhunior
