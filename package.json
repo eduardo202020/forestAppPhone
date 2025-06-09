@@ -47,7 +47,9 @@
     "react-native-screens": "~4.4.0",
     "react-native-vector-icons": "^10.2.0",
     "react-native-view-shot": "~4.0.3",
-    "react-native-web": "~0.19.13"
+    "react-native-web": "~0.19.13",
+    "uuid": "^11.1.0",
+    "expo-crypto": "~14.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -56,6 +58,7 @@
     "@types/react": "~18.3.12",
     "@types/react-native": "^0.72.8",
     "@types/react-test-renderer": "^19.1.0",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8.26.1",
     "@typescript-eslint/parser": "^8.26.1",
     "eslint": "^9.22.0",

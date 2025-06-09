@@ -18,7 +18,7 @@ export interface Proyecto {
   region: string;
   descripcion: string;
   plantas: Planta[];
-  estado: 'En progreso' | 'Pendiente' | 'Completado';
+  // estado: 'En progreso' | 'Pendiente' | 'Completado';
   imagenes: string[];
   location?: { latitude: number; longitude: number };
 }
@@ -62,7 +62,7 @@ export const proyectosData: Proyecto[] = [
         ],
       },
     ],
-    estado: 'En progreso',
+    // estado: 'En progreso',
     imagenes: [
       'https://tse1.mm.bing.net/th?id=OIP.719QYVRbMbJUZ68KCO-4rQHaHa&w=474&h=474&c=7',
       'https://tse3.mm.bing.net/th?id=OIP.MCrqZ0ORCpWF6HiS89QZZwHaFj&w=355&h=355&c=7',
@@ -108,7 +108,7 @@ export const proyectosData: Proyecto[] = [
         ],
       },
     ],
-    estado: 'Pendiente',
+    // estado: 'Pendiente',
     imagenes: [
       'https://tse1.mm.bing.net/th?id=OIP.b9F5q7RzaICzCJg5jZofSQHaE7&w=315&h=315&c=7',
       'https://tse1.mm.bing.net/th?id=OIP.ovmlezC6IKILrqsg2XouSQHaE8&w=316&h=316&c=7',
@@ -154,7 +154,7 @@ export const proyectosData: Proyecto[] = [
         ],
       },
     ],
-    estado: 'Completado',
+    // estado: 'Completado',
     imagenes: [
       'https://img.freepik.com/fotos-premium/arbol-papel-polylepis-incana_261041-1433.jpg',
       'https://live.staticflickr.com/65535/50288184356_110a9e5c9b_b.jpg',
@@ -200,7 +200,7 @@ export const proyectosData: Proyecto[] = [
         ],
       },
     ],
-    estado: 'En progreso',
+    // estado: 'En progreso',
     imagenes: [
       'https://d2seqvvyy3b8p2.cloudfront.net/c757229d08484bcbacbb203b27c965fb.jpg',
       'https://inaturalist-open-data.s3.amazonaws.com/photos/1321926/medium.jpg',
