@@ -2944,8 +2944,7 @@ exports[`ProyectoFecha renderiza correctamente el calendario con la fecha marcad
             }
           >
             <View
-              accessibilityLabel="today Saturday 31 May 2025 selected You have no entries for this day "
-              accessibilityRole="button"
+              accessibilityLabel=" Saturday 31 May 2025 selected You have no entries for this day "
               accessibilityState={
                 {
                   "busy": undefined,

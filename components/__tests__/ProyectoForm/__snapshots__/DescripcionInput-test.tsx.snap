@@ -5,21 +5,21 @@ exports[`DescripcionInput muestra el error si existe 1`] = `
   <TextInput
     editable={true}
     multiline={true}
+    numberOfLines={4}
     onChangeText={[Function]}
     placeholder="Descripción"
     style={
       [
         {
-          "backgroundColor": "#f9f9f9",
           "borderColor": "#ccc",
-          "borderRadius": 8,
+          "borderRadius": 5,
           "borderWidth": 1,
-          "fontSize": 16,
-          "marginBottom": 12,
+          "marginBottom": 10,
           "padding": 10,
         },
         {
-          "minHeight": 60,
+          "height": 80,
+          "textAlignVertical": "top",
         },
       ]
     }
@@ -29,8 +29,7 @@ exports[`DescripcionInput muestra el error si existe 1`] = `
     style={
       {
         "color": "red",
-        "fontSize": 13,
-        "marginBottom": 8,
+        "fontSize": 12,
       }
     }
   >
@@ -43,21 +42,21 @@ exports[`DescripcionInput se renderiza sin errores 1`] = `
 <TextInput
   editable={true}
   multiline={true}
+  numberOfLines={4}
   onChangeText={[Function]}
   placeholder="Descripción"
   style={
     [
       {
-        "backgroundColor": "#f9f9f9",
         "borderColor": "#ccc",
-        "borderRadius": 8,
+        "borderRadius": 5,
         "borderWidth": 1,
-        "fontSize": 16,
-        "marginBottom": 12,
+        "marginBottom": 10,
         "padding": 10,
       },
       {
-        "minHeight": 60,
+        "height": 80,
+        "textAlignVertical": "top",
       },
     ]
   }

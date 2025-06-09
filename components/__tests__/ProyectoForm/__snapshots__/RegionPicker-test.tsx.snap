@@ -2,16 +2,23 @@
 
 exports[`RegionPicker muestra el error si existe 1`] = `
 [
+  <Text
+    style={
+      {
+        "fontWeight": "bold",
+        "marginBottom": 5,
+      }
+    }
+  >
+    Región
+  </Text>,
   <View
     style={
       {
-        "backgroundColor": "#f9f9f9",
         "borderColor": "#ccc",
-        "borderRadius": 8,
+        "borderRadius": 5,
         "borderWidth": 1,
-        "fontSize": 16,
-        "marginBottom": 12,
-        "padding": 10,
+        "marginBottom": 10,
       }
     }
   >
@@ -79,8 +86,7 @@ exports[`RegionPicker muestra el error si existe 1`] = `
     style={
       {
         "color": "red",
-        "fontSize": 13,
-        "marginBottom": 8,
+        "fontSize": 12,
       }
     }
   >
@@ -90,77 +96,86 @@ exports[`RegionPicker muestra el error si existe 1`] = `
 `;
 
 exports[`RegionPicker se renderiza sin errores 1`] = `
-<View
-  style={
-    {
-      "backgroundColor": "#f9f9f9",
-      "borderColor": "#ccc",
-      "borderRadius": 8,
-      "borderWidth": 1,
-      "fontSize": 16,
-      "marginBottom": 12,
-      "padding": 10,
-    }
-  }
->
-  <RNCPicker
-    items={
-      [
-        {
-          "label": "Selecciona una región",
-          "testID": undefined,
-          "textColor": undefined,
-          "value": "",
-        },
-        {
-          "label": "Loreto",
-          "testID": undefined,
-          "textColor": undefined,
-          "value": "Loreto",
-        },
-        {
-          "label": "Cusco",
-          "testID": undefined,
-          "textColor": undefined,
-          "value": "Cusco",
-        },
-        {
-          "label": "Puno",
-          "testID": undefined,
-          "textColor": undefined,
-          "value": "Puno",
-        },
-        {
-          "label": "Madre de Dios",
-          "testID": undefined,
-          "textColor": undefined,
-          "value": "Madre de Dios",
-        },
-        {
-          "label": "Amazonas",
-          "testID": undefined,
-          "textColor": undefined,
-          "value": "Amazonas",
-        },
-        {
-          "label": "San Martín",
-          "testID": undefined,
-          "textColor": undefined,
-          "value": "San Martín",
-        },
-      ]
-    }
-    numberOfLines={1}
-    onChange={[Function]}
-    selectedIndex={0}
+[
+  <Text
     style={
-      [
-        {
-          "height": 216,
-        },
-        undefined,
-      ]
+      {
+        "fontWeight": "bold",
+        "marginBottom": 5,
+      }
     }
-  />
-</View>
+  >
+    Región
+  </Text>,
+  <View
+    style={
+      {
+        "borderColor": "#ccc",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "marginBottom": 10,
+      }
+    }
+  >
+    <RNCPicker
+      items={
+        [
+          {
+            "label": "Selecciona una región",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "",
+          },
+          {
+            "label": "Loreto",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "Loreto",
+          },
+          {
+            "label": "Cusco",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "Cusco",
+          },
+          {
+            "label": "Puno",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "Puno",
+          },
+          {
+            "label": "Madre de Dios",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "Madre de Dios",
+          },
+          {
+            "label": "Amazonas",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "Amazonas",
+          },
+          {
+            "label": "San Martín",
+            "testID": undefined,
+            "textColor": undefined,
+            "value": "San Martín",
+          },
+        ]
+      }
+      numberOfLines={1}
+      onChange={[Function]}
+      selectedIndex={0}
+      style={
+        [
+          {
+            "height": 216,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>,
+]
 `;

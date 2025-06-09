@@ -6,6 +6,7 @@ import * as Linking from 'expo-linking';
 
 jest.mock('expo-clipboard');
 jest.mock('expo-linking');
+jest.spyOn(require('react-native').Alert, 'alert').mockImplementation(jest.fn());
 
 const mockMarkdown =
   '# Proyecto Demo\n\n| Campo | Valor |\n|---|---|\n| **Descripción** | Demo |';
@@ -17,11 +18,11 @@ describe('WhatsappShareButton', () => {
     setStringAsync.mockResolvedValue(undefined);
     openURL.mockResolvedValue(undefined);
 
-    const { getByA11yLabel } = render(
+    const { getByLabelText } = render(
       <WhatsappShareButton markdown={mockMarkdown} />
     );
 
-    fireEvent.press(getByA11yLabel('Compartir proyecto por WhatsApp'));
+    fireEvent.press(getByLabelText('Compartir proyecto por WhatsApp'));
 
     await waitFor(() => {
       expect(setStringAsync).toHaveBeenCalledWith(mockMarkdown);
