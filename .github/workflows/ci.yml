@@ -1,6 +1,5 @@
-# Expo CI/CD simple para Expo Router (sin EAS, solo lint, test y export web)
-
-name: Expo CI
+# .github/workflows/ci.yml
+name: CI for ForestApp
 
 on:
   push:
@@ -9,39 +8,24 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  build-and-validate:
+    name: Validación de Linter y Tests
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-      - name: Install dependencies
-        run: npm install
-      - name: Lint
-        run: npm run lint
-      - name: Test
-        run: npm test
 
-  export-web:
-    runs-on: ubuntu-latest
-    needs: test
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 20
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-      - name: Install dependencies
-        run: npm install
-      - name: Export Expo Web
-        run: npx expo export --platform web
+          node-version: 18
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Ejecutar Linter (ESLint)
+        run: npm run lint
+
+      - name: Ejecutar Tests (Jest)
+        run: npm run test
