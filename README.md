@@ -222,4 +222,4 @@ El **Método Miyawaki** es una técnica de reforestación intensiva que permite 
 
 La implementación de bosques mediante el Método Miyawaki en áreas urbanas y rurales de la India ha demostrado ser una estrategia efectiva para la **prevención de inundaciones**, además de ofrecer beneficios adicionales como la mejora de la calidad del aire y el aumento de la biodiversidad.
 
-v1
+v1 v2
