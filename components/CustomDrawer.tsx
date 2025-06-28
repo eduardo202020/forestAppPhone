@@ -37,12 +37,13 @@ function CustomDrawerContent(props: any) {
             </>
           ) : (
             <>
-              <Image
-                source={{
-                  uri: 'https://portafolio-eduardo.vercel.app/_next/image?url=%2FextraImages%2FprofilePic.jpg&w=750&q=75',
-                }}
-                style={styles.avatar}
-              />
+              <View style={styles.avatar}>
+                <Ionicons
+                  name="person-circle-outline"
+                  size={80}
+                  color="#b0b0b0"
+                />
+              </View>
               <Text style={styles.userName}>Invitado</Text>
             </>
           )}
@@ -84,20 +85,6 @@ function CustomDrawerContent(props: any) {
               style={styles.drawerItemStyle}
             />
           )}
-          <DrawerItem
-            label="Cerrar"
-            labelStyle={styles.drawerItemLabel}
-            icon={({ color, size }) => (
-              <Ionicons
-                name="close-outline"
-                size={size}
-                color={color}
-                style={styles.drawerItemIcon}
-              />
-            )}
-            onPress={() => props.navigation.closeDrawer()}
-            style={styles.drawerItemStyle}
-          />
         </View>
       </DrawerContentScrollView>
       <View style={styles.bottomSection}>
@@ -122,6 +109,9 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 3,
     borderColor: '#5363df',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#e0e0e0',
   },
   userName: {
     textAlign: 'center',
@@ -157,6 +147,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#fafafa',
     borderTopWidth: 2,
     padding: 20,
+    paddingBottom: 40,
   },
 });
 
