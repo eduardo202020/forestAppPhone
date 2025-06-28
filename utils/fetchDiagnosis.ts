@@ -1,9 +1,14 @@
 import axios from 'axios';
 import { Diagnosis } from '../app/(drawer)/pasos/index';
 
+// Configuración de la API usando variables de entorno
+const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL || 'https://server-agricultura-db.onrender.com';
+const DIAGNOSIS_ENDPOINT = process.env.EXPO_PUBLIC_DIAGNOSIS_ENDPOINT || '/diagnosis';
+const QUESTION_ENDPOINT = process.env.EXPO_PUBLIC_QUESTION_ENDPOINT || '/question';
+
 export async function fetchDiagnosis(query: string): Promise<Diagnosis[]> {
   const response = await axios.post(
-    `https://server-agricultura-db.onrender.com/diagnosis?query=${encodeURIComponent(query)}`,
+    `${API_BASE_URL}${DIAGNOSIS_ENDPOINT}?query=${encodeURIComponent(query)}`,
     {},
     {
       headers: {
@@ -24,7 +29,7 @@ export async function fetchQuestion(
   eventType: string
 ): Promise<any> {
   const response = await axios.post(
-    `https://server-agricultura-db.onrender.com/question`,
+    `${API_BASE_URL}${QUESTION_ENDPOINT}`,
     {
       query: question,
       type: eventType,
