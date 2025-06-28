@@ -6,37 +6,13 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal",
-      "env": {
-        "EXPO_PUBLIC_APP_ENVIRONMENT": "development",
-        "EXPO_PUBLIC_API_BASE_URL": "https://server-agricultura-db.onrender.com",
-        "EXPO_PUBLIC_DIAGNOSIS_ENDPOINT": "/diagnosis",
-        "EXPO_PUBLIC_QUESTION_ENDPOINT": "/question",
-        "EXPO_PUBLIC_DEBUG_MODE": "true",
-        "EXPO_PUBLIC_LOG_LEVEL": "info"
-      }
+      "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal",
-      "env": {
-        "EXPO_PUBLIC_APP_ENVIRONMENT": "preview",
-        "EXPO_PUBLIC_API_BASE_URL": "https://server-agricultura-db.onrender.com",
-        "EXPO_PUBLIC_DIAGNOSIS_ENDPOINT": "/diagnosis",
-        "EXPO_PUBLIC_QUESTION_ENDPOINT": "/question",
-        "EXPO_PUBLIC_DEBUG_MODE": "false",
-        "EXPO_PUBLIC_LOG_LEVEL": "warn"
-      }
+      "distribution": "internal"
     },
     "production": {
-      "autoIncrement": true,
-      "env": {
-        "EXPO_PUBLIC_APP_ENVIRONMENT": "production",
-        "EXPO_PUBLIC_API_BASE_URL": "https://server-agricultura-db.onrender.com",
-        "EXPO_PUBLIC_DIAGNOSIS_ENDPOINT": "/diagnosis",
-        "EXPO_PUBLIC_QUESTION_ENDPOINT": "/question",
-        "EXPO_PUBLIC_DEBUG_MODE": "false",
-        "EXPO_PUBLIC_LOG_LEVEL": "error"
-      }
+      "autoIncrement": true
     }
   },
   "submit": {
