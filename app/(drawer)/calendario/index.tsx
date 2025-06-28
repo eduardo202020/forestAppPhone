@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { Ionicons } from '@expo/vector-icons';
@@ -28,6 +29,8 @@ export default function CalendarioScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedEventType, setSelectedEventType] = useState('');
   const [userQuestion, setUserQuestion] = useState('');
+  const [apiResponse, setApiResponse] = useState('');
+  const [isLoadingResponse, setIsLoadingResponse] = useState(false);
 
   // Fechas destacadas con diferentes eventos
   const markedDates: MarkedDates = {
@@ -96,28 +99,46 @@ export default function CalendarioScreen() {
 
   const handleEventPress = (eventType: string) => {
     setSelectedEventType(eventType);
+    setUserQuestion('');
+    setApiResponse('');
     setModalVisible(true);
   };
 
   const handleSubmitQuestion = async () => {
     if (userQuestion.trim()) {
+      setIsLoadingResponse(true);
+      setApiResponse('');
+
       try {
-        const response = await fetchQuestion(userQuestion, selectedEventType);
-        Alert.alert(
-          'Respuesta recibida',
-          `Pregunta: "${userQuestion}"\n\nRespuesta: ${response || 'Respuesta procesada correctamente'}`,
-          [{ text: 'OK' }]
+        // Crear contexto completo para la pregunta
+        const eventDescription = eventDescriptions[selectedEventType] || '';
+        const contextualizedQuestion = `Contexto: ${selectedEventType} - ${eventDescription}\n\nPregunta del usuario: ${userQuestion.trim()}`;
+
+        const response = await fetchQuestion(
+          contextualizedQuestion,
+          selectedEventType
         );
-        setUserQuestion('');
-        setModalVisible(false);
+
+        // La respuesta debe ser un string o un objeto con una propiedad 'answer'
+        let responseText = '';
+        if (typeof response === 'string') {
+          responseText = response;
+        } else if (response && response.answer) {
+          responseText = response.answer;
+        } else if (response && response.response) {
+          responseText = response.response;
+        } else {
+          responseText = 'Respuesta procesada correctamente';
+        }
+
+        setApiResponse(responseText);
       } catch (error: any) {
         console.error('Error al enviar la pregunta:', error);
-        Alert.alert(
-          'Error',
-          error.message ||
-            'Hubo un problema al procesar tu pregunta. Inténtalo de nuevo.',
-          [{ text: 'OK' }]
+        setApiResponse(
+          `Error: ${error.message || 'Hubo un problema al procesar tu pregunta. Inténtalo de nuevo.'}`
         );
+      } finally {
+        setIsLoadingResponse(false);
       }
     } else {
       Alert.alert('Error', 'Por favor escribe una pregunta antes de enviar.');
@@ -324,14 +345,39 @@ export default function CalendarioScreen() {
                 multiline={true}
                 numberOfLines={3}
                 textAlignVertical="top"
+                editable={!isLoadingResponse}
               />
+
+              {/* Indicador de carga */}
+              {isLoadingResponse && (
+                <View style={styles.loadingContainer}>
+                  <ActivityIndicator size="small" color="#5363df" />
+                  <Text style={styles.loadingText}>Procesando pregunta...</Text>
+                </View>
+              )}
+
+              {/* Respuesta de la API */}
+              {apiResponse && !isLoadingResponse && (
+                <View style={styles.responseContainer}>
+                  <Text style={styles.responseLabel}>Respuesta:</Text>
+                  <ScrollView style={styles.responseScroll} nestedScrollEnabled>
+                    <Text style={styles.responseText}>{apiResponse}</Text>
+                  </ScrollView>
+                </View>
+              )}
 
               <View style={styles.modalButtons}>
                 <TouchableOpacity
-                  style={styles.submitButton}
+                  style={[
+                    styles.submitButton,
+                    isLoadingResponse && styles.disabledButton,
+                  ]}
                   onPress={handleSubmitQuestion}
+                  disabled={isLoadingResponse}
                 >
-                  <Text style={styles.submitButtonText}>Enviar pregunta</Text>
+                  <Text style={styles.submitButtonText}>
+                    {isLoadingResponse ? 'Enviando...' : 'Enviar pregunta'}
+                  </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.cancelButton}
@@ -353,13 +399,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f8f9fa',
     padding: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#5363df',
-    textAlign: 'center',
-    marginBottom: 20,
   },
   calendar: {
     borderRadius: 10,
@@ -552,5 +591,45 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  loadingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 15,
+    marginBottom: 10,
+  },
+  loadingText: {
+    marginLeft: 10,
+    fontSize: 16,
+    color: '#5363df',
+    fontStyle: 'italic',
+  },
+  responseContainer: {
+    backgroundColor: '#f0f8ff',
+    borderRadius: 8,
+    padding: 15,
+    marginBottom: 20,
+    borderLeftWidth: 4,
+    borderLeftColor: '#5363df',
+  },
+  responseLabel: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#5363df',
+    marginBottom: 10,
+  },
+  responseScroll: {
+    maxHeight: 150,
+  },
+  responseText: {
+    fontSize: 15,
+    lineHeight: 22,
+    color: '#333',
+    textAlign: 'left',
+  },
+  disabledButton: {
+    backgroundColor: '#c0c0c0',
+    opacity: 0.7,
   },
 });

@@ -24,8 +24,12 @@ export async function fetchQuestion(
   eventType: string
 ): Promise<any> {
   const response = await axios.post(
-    `https://server-agricultura-db.onrender.com/question?query=${encodeURIComponent(question)}&type=${encodeURIComponent(eventType)}`,
-    {},
+    `https://server-agricultura-db.onrender.com/question`,
+    {
+      query: question,
+      type: eventType,
+      context: `Pregunta sobre ${eventType} en agricultura y método kawasaki`,
+    },
     {
       headers: {
         'Content-Type': 'application/json',

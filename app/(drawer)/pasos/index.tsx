@@ -48,7 +48,7 @@ export default function HomeScreen() {
       if (storedHistory) {
         const parsedHistory = JSON.parse(storedHistory);
         setHistory(parsedHistory);
-        console.log('Historial cargado:', parsedHistory.length, 'elementos');
+        // console.log('Historial cargado:', parsedHistory.length, 'elementos');
       } else {
         console.log('No hay historial guardado');
       }
@@ -73,7 +73,7 @@ export default function HomeScreen() {
         'searchHistory',
         JSON.stringify(updatedHistory)
       );
-      console.log('Historial guardado:', updatedHistory.length, 'elementos');
+      // console.log('Historial guardado:', updatedHistory.length, 'elementos');
     } catch (error) {
       console.error('Error al guardar en el historial:', error);
     }
@@ -282,7 +282,8 @@ export default function HomeScreen() {
             />
           ) : (
             <Text style={styles.noHistoryText}>
-              No hay búsquedas en el historial. Realiza una búsqueda para empezar.
+              No hay búsquedas en el historial. Realiza una búsqueda para
+              empezar.
             </Text>
           )}
         </View>
