@@ -1,122 +1,151 @@
 import React, { useState } from 'react';
-import { Text, Button, Alert, ScrollView, StyleSheet } from 'react-native';
-import { supabase } from '@/utils/supabase';
-import { proyectosData } from '@/data/proyectos';
-import { plantasData } from '@/data/plantas';
-import { Planta } from '@/types/index';
-import { useAuth } from '@/providers/AuthProvider';
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  TextInput,
+  FlatList,
+  ActivityIndicator,
+  Alert,
+  Pressable,
+  TouchableOpacity,
+} from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import { fetchDiagnosis } from '../../../utils/fetchDiagnosis';
+/// <reference path="../../types/react-native-fetch.d.ts" />
 
-const toPostgisPoint = (lat: number, lng: number): string =>
-  `POINT(${lng} ${lat})`;
+export interface Diagnosis {
+  diagnosis_name: string;
+  short_description: string;
+  slug: string;
+}
 
-export default function AdminPasos() {
-  const [loading, setLoading] = useState(false);
-  const { session } = useAuth();
+export default function HomeScreen() {
+  const [query, setQuery] = useState(''); // Estado para almacenar la consulta
+  const [results, setResults] = useState<Diagnosis[]>([]); // Estado para los resultados de la API
+  const [loading, setLoading] = useState(false); // Estado para el indicador de carga
 
-  const handleResetData = async () => {
+  // Función para enviar la consulta al servidor
+  const handleSearch = async () => {
+    if (!query.trim()) {
+      Alert.alert('Error', 'Por favor, escribe una consulta antes de buscar.');
+      return;
+    }
+
     setLoading(true);
     try {
-      // Borra todo
-      await supabase.from('proyecto_plantas').delete().neq('id', '');
-      await supabase.from('proyectos').delete().neq('id', '');
-      await supabase.from('plantas').delete().neq('id', '');
-
-      // Inserta plantas (sin el campo id, si existe)
-      const plantasSinId = plantasData.map((planta: any) => {
-        // Eliminar id si existe
-        const plantaCopy = { ...planta };
-        delete plantaCopy.id;
-        return plantaCopy;
-      });
-      const { data: plantasInsertadas, error: plantasError } = await supabase
-        .from('plantas')
-        .insert(plantasSinId as Planta[])
-        .select();
-      if (plantasError) throw plantasError;
-
-      // Obtiene el usuario autenticado (o usa el id proporcionado)
-      const userId =
-        session?.user?.id || 'bbf2a613-bda1-4a30-9568-fb50f4486d9f';
-
-      // Inserta proyectos (sin el campo plantas, ubicacion, id y location)
-      const proyectosProcesados = proyectosData.map((proyecto) => {
-        const proyectoCopy = { ...proyecto };
-        delete proyectoCopy.plantas;
-        delete proyectoCopy.ubicacion;
-        delete proyectoCopy.id;
-        delete proyectoCopy.location;
-        return {
-          ...proyectoCopy,
-          user_id: userId,
-          location: proyecto.location
-            ? toPostgisPoint(
-                proyecto.location.latitude,
-                proyecto.location.longitude
-              )
-            : null,
-        };
-      });
-      const { data: proyectosInsertados, error: proyectosError } =
-        await supabase.from('proyectos').insert(proyectosProcesados).select();
-      if (proyectosError) throw proyectosError;
-
-      // Inserta relaciones en proyecto_plantas
-      for (const [i, proyecto] of proyectosData.entries()) {
-        const proyectoId = proyectosInsertados?.[i]?.id;
-        if (!proyectoId) continue;
-        for (const planta of proyecto.plantas) {
-          // Busca la planta insertada por nombre_cientifico (ajusta si usas otro identificador)
-          const plantaInsertada = plantasInsertadas?.find(
-            (p) => p.nombre_cientifico === planta.nombre_cientifico
-          );
-          if (plantaInsertada) {
-            await supabase.from('proyecto_plantas').insert({
-              proyecto_id: proyectoId,
-              planta_id: plantaInsertada.id,
-            });
-          }
-        }
-      }
-
-      Alert.alert('Éxito', 'Tablas reiniciadas y datos insertados.');
-    } catch (err: any) {
-      Alert.alert('Error', err.message || 'Ocurrió un error');
+      const data = await fetchDiagnosis(query);
+      setResults(data); // Actualizar resultados
+    } catch (error: any) {
+      console.error('Error al realizar la búsqueda:', error);
+      Alert.alert(
+        'Error',
+        error.message || 'Hubo un problema al conectarse al servidor.'
+      );
     } finally {
       setLoading(false);
     }
   };
 
+  // Función para limpiar el campo de entrada y los resultados
+  const handleClear = () => {
+    setQuery(''); // Limpiar el campo de texto
+    setResults([]); // Limpiar los resultados
+  };
+
   return (
-    <ScrollView contentContainerStyle={styles.contentContainer}>
-      <Text style={styles.title}>Admin de Datos (Plantas y Proyectos)</Text>
-      <Button
-        title={
-          loading ? 'Procesando...' : 'Reiniciar tablas y cargar datos demo'
-        }
-        onPress={handleResetData}
-        disabled={loading}
+    <View style={styles.container}>
+      {/* Header */}
+      {/* Input de consulta */}
+      <Text style={styles.title}>Busca una enfermedad</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Describe los síntomas de la planta"
+        value={query}
+        onChangeText={setQuery}
+        multiline={true} // Permite varias líneas
+        numberOfLines={5} // Muestra 2-3 líneas
       />
-      <Text style={styles.boldText}>
-        Plantas de ejemplo: {plantasData.length}
-      </Text>
-      <Text style={styles.boldText}>
-        Proyectos de ejemplo: {proyectosData.length}
-      </Text>
-    </ScrollView>
+      {query.length > 0 && (
+        <View>
+          <TouchableOpacity onPress={handleClear} style={styles.clearButton}>
+            <Text style={styles.clearButtonText}>Borrar</Text>
+            <FontAwesome name="times-circle" size={20} color="#666" />
+          </TouchableOpacity>
+        </View>
+      )}
+
+      {/* Botón de búsqueda */}
+      <Button title="Buscar" onPress={handleSearch} />
+
+      {/* Indicador de carga */}
+      {loading && <ActivityIndicator size="large" color="#0000ff" />}
+
+      {/* Resultados */}
+      <FlatList<Diagnosis>
+        data={results}
+        keyExtractor={(_item, index) => index.toString()}
+        renderItem={({ item }: { item: Diagnosis }) => (
+          <View style={styles.resultItem}>
+            <Pressable
+              onPress={() => {
+                // router.push(`/detail/${item.slug}`);
+                console.log(item.slug);
+              }}
+            >
+              <Text style={styles.resultTitle}>{item.diagnosis_name}</Text>
+              <Text style={styles.resultDescription}>
+                {item.short_description}
+              </Text>
+            </Pressable>
+          </View>
+        )}
+        ListEmptyComponent={
+          !loading ? (
+            <Text style={styles.noResultsText}>
+              No hay resultados. Intenta con otra consulta.
+            </Text>
+          ) : null
+        }
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  contentContainer: {
-    padding: 24,
+  container: { flex: 1, padding: 16, backgroundColor: '#fff' },
+  title: { fontSize: 18, fontWeight: 'bold', marginBottom: 8 },
+  input: {
+    height: 80, // Altura suficiente para mostrar varias líneas
+    textAlignVertical: 'top', // Alinea el texto en la parte superior
+    padding: 8,
+    fontSize: 16,
+    color: '#333',
+    backgroundColor: '#eee',
+    borderRadius: 5,
+    marginBottom: 12,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 16,
+  resultItem: {
+    backgroundColor: '#f9f9f9',
+    padding: 12,
+    marginBottom: 10,
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
   },
-  boldText: {
-    marginTop: 8,
-    fontWeight: 'bold',
+  clearButton: {
+    marginLeft: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 4,
   },
+  resultTitle: { fontSize: 16, fontWeight: 'bold' },
+  resultDescription: { marginTop: 4, fontSize: 14, color: '#555' },
+  noResultsText: { textAlign: 'center', marginTop: 20, color: '#555' },
+  clearButtonText: { color: '#666', marginRight: 6 },
 });
